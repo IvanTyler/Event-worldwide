@@ -1,13 +1,32 @@
 import './App.css';
-import axios from 'axios'
+import Header from './Components/Header/Header';
+import SignUp from './Components/SignUp/SignUp';
+import SignIn from './Components/SignIn/SignIn';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import axios from 'axios';
 
 function App() {
-
-  const serv = axios.get('http://87.249.49.53:3001')
-  console.log(serv)
+  axios.get('http://87.249.49.53:3001/');
   return (
     <div className="App">
-      <div>Сдесь будет проект 😀</div>
+      <Router>
+        <Header />
+        <Switch>
+
+          <Route exact path="/signUp">
+            <SignUp />
+          </Route>
+
+          <Route exact path="/signIn">
+            <SignIn />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
