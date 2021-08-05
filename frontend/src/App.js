@@ -1,9 +1,31 @@
 import './App.css';
+import Header from './Components/Header/Header';
+import SignUp from './Components/SignUp/SignUp';
+import SignIn from './Components/SignIn/SignIn';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 function App() {
+
   return (
     <div className="App">
-      <div>Сдесь будет проект 😀</div>
+      <Router>
+        <Header />
+        <Switch>
+
+          <Route exact path="/signUp">
+            <SignUp />
+          </Route>
+
+          <Route exact path="/signIn">
+            <SignIn />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
