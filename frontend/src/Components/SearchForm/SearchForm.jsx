@@ -25,8 +25,6 @@ function SearchForm() {
 
 
   const submitHandler = (formData) => {
-    console.log(formData);
-    console.log(formData.startDateTime._d);
     dispatch(getEventsByParams(formData))
     // setTodoInput('')
   }
