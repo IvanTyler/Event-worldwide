@@ -23,40 +23,19 @@ function SearchForm() {
 
   const dispatch = useDispatch()
 
-  const selectCategory = useRef(null)
-console.log(selectCategory);
 
-  const findEvent = (value) => {
-    dispatch(setAllByParams(value))
-}
-
-  const submitHandler = (event) => {
-    event.preventDefault()
-    console.log(123);
-    const category = selectCategory.current.value
-    // const date = selectDate.current.value
-    console.log(category.current.value);
-    // console.log(date);
-
-
-    // // findEvent(inputUser)
-    // dispatch(getEventsByParams(inputCity, inputCountry, inputKeyword, category, date))
-    // setInputCity('')
-    // setInputCountry('')
-    // setInputKeyword('')
-
+  const submitHandler = (formData) => {
+    console.log(formData);
+    console.log(formData.startDateTime._d);
+    dispatch(getEventsByParams(formData))
+    // setTodoInput('')
   }
-  const onFinish = (values) => {
-    // event.preventDefault()
-    console.log('Received values of form: ', values);
-  };
 
 
   return (
     <>
       <Form
-      // onFormFinish={submitHandler}
-      onFinish={onFinish}
+      onFinish={submitHandler}
         labelCol={{
           span: 4,
         }}
@@ -71,25 +50,25 @@ console.log(selectCategory);
         size={componentSize}
       >
 
-        <Form.Item label="Страна" name='страна'>
+        <Form.Item label="Страна" name='countryCode'>
           <Input />
         </Form.Item>
-        <Form.Item label="Город" name='город'>
+        <Form.Item label="Город" name='city'>
           <Input />
         </Form.Item>
-        <Form.Item label="Укажите ключевое слово" name='укажите ключевое слово'>
+        <Form.Item label="Укажите ключевое слово" name='keyword'>
           <Input />
         </Form.Item>
-        <Form.Item label="Категория">
-          <Select ref={selectCategory} label="Категория" name='категория'>
-            <Select.Option value="sport">Спорт</Select.Option>
-            <Select.Option value="music">Музыка</Select.Option>
-            <Select.Option value="art">Исскуство и театр</Select.Option>
-            <Select.Option value="other">Разное</Select.Option>
+        <Form.Item label="Категория" name='classificationName'>
+          <Select>
+            <Select.Option value="Sports">Спорт</Select.Option>
+            <Select.Option value="Music">Музыка</Select.Option>
+            <Select.Option value="Arts & Theatre">Исскуство и театр</Select.Option>
+            <Select.Option value="Miscellaneous">Разное</Select.Option>
           </Select>
         </Form.Item>
 
-        <Form.Item label="Дата" name='дата'>
+        <Form.Item label="Дата" name='startDateTime'>
           <DatePicker />
         </Form.Item>
 

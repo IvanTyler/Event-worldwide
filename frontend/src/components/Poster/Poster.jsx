@@ -1,18 +1,21 @@
+import style from '../Container/container.module.css'
+
 const contentStyle = {
-  height: '160px',
+  height: '700px',
+  // width: '100%',
   color: '#fff',
   lineHeight: '160px',
   textAlign: 'center',
-  background: '#364d79',
+  background: '#2a6a84',
 };
 
 function Poster({ img, title }) {
-
-
   return (
-    <div style={contentStyle}>
-      <img  src={img} alt="" />
-      <h3 >{title}</h3>
+    <div style={{marginTop: '30px'}} className={style.container}>
+      <div style={contentStyle}>
+        <img src={img} style={{objectFit: 'cover', width: '100%', height: '100%'}} alt="" />
+        <h3 style={{color: '#fff', fontSize: '25px'}}>{title}</h3>
+      </div>
     </div>
   )
 }
