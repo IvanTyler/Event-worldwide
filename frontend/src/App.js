@@ -3,7 +3,7 @@ import Header from './Components/Header/Header';
 import SignUp from './Components/SignUp/SignUp';
 import SignIn from './Components/SignIn/SignIn';
 import PosterList from './Components/PosterList/PosterList';
-
+import SearchForm from './Components/SearchForm/SearchForm';
 import {
   BrowserRouter as Router,
   Switch,
@@ -32,7 +32,11 @@ function App() {
             <SignIn />
           </Route>
 
+          <Route exact path="/search">
+            < SearchForm/>
+          </Route>
 
+          <PosterList/>
         </Switch>
       </Router>
     </div>

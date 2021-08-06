@@ -14,6 +14,7 @@ function Header() {
                         <ul className={style.headerMenu}>
                             <li className={style.headerMenuItem}>
                                 <Link className={style.headerMenuLink} to="/">Главная</Link>
+                                <Link className={style.headerMenuLink} to="/search">Поиск событий</Link>
                             </li>
                             <li className={style.headerMenuItem}>
                                 <Link className={style.headerMenuLink} to="/signUp">Регистрация</Link>
