@@ -1,4 +1,7 @@
 import style from './SignIn.module.css'
+import SignUp from '../SignUp/SignUp.module.css'
+import styleContainer from '../Container/container.module.css'
+
 import { useState } from 'react'
 import { getFormUserDataAuth } from '../../redux/actions/userAC';
 import { useDispatch } from 'react-redux';
@@ -24,11 +27,13 @@ function SignIn() {
 
     return (
         <>
-            <form onSubmit={submitHandler} className={style.HeaderformSignUp} action="">
-                <input required onChange={inputHandlerEmail} maxLength="15" className={style.formAddInput} type="email" name="email" placeholder="Введите email" />
-                <input required onChange={inputHandlerPassword} maxLength="15" className={style.formAddInput} type="password" name="password" placeholder="Password" />
-                <button type="submit">Зарегистрироваться</button>
-            </form>
+            <div className={styleContainer.container}>
+                <form className={SignUp.Headerform} onSubmit={submitHandler} action="">
+                    <input required onChange={inputHandlerEmail} maxLength="15" className={SignUp.inputHeaderForm} type="email" name="email" placeholder="Введите email" />
+                    <input required onChange={inputHandlerPassword} maxLength="15" className={SignUp.inputHeaderForm} type="password" name="password" placeholder="Password" />
+                    <button className={SignUp.HeaderFormButton} type="submit">Войти</button>
+                </form>
+            </div>
         </>
     )
 }
