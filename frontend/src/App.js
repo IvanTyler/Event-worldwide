@@ -1,4 +1,5 @@
 import './App.css';
+import styleContainer from './Components/Container/container.module.css'
 import Header from './Components/Header/Header';
 import SignUp from './Components/SignUp/SignUp';
 import SignIn from './Components/SignIn/SignIn';
@@ -18,26 +19,30 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <Switch>
-          
-          <Route exact path="/">
-            <PosterList />
-          </Route>
+        <main>
+          <div className={styleContainer.container}>
+            <Switch>
 
-          <Route exact path="/signUp">
-            <SignUp />
-          </Route>
+              <Route exact path="/">
+                <PosterList />
+              </Route>
 
-          <Route exact path="/signIn">
-            <SignIn />
-          </Route>
+              <Route exact path="/signUp">
+                <SignUp />
+              </Route>
 
-          <Route exact path="/search">
-            < SearchForm/>
-          </Route>
+              <Route exact path="/signIn">
+                <SignIn />
+              </Route>
 
-          <PosterList/>
-        </Switch>
+              <Route exact path="/search">
+                <SearchForm />
+              </Route>
+
+              <PosterList />
+            </Switch>
+          </div>
+        </main>
       </Router>
     </div>
   );
