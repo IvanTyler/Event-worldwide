@@ -8,9 +8,9 @@ import initState from '../initState'
 const userReducer = (state = initState, action) => {
     switch (action.type) {
         case ADD_USER:
-            return {...state, user: action.payload }
+            return { ...state, user: action.payload }
         case ADD_ID:
-            return {...state, id: action.payload }
+            return { ...state, id: action.payload }
         default:
             return state
     }
