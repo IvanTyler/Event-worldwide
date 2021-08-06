@@ -16,7 +16,7 @@ export const addID = (id) => {
 }
 
 export const getFormUserData =  (userName, email, password, city, phone) => async (dispatch) => {
-    const response = await fetch('http://87.249.49.53:3001/signUp', {
+    const response = await fetch('https://87.249.49.53:3001/signUp', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export const getFormUserData =  (userName, email, password, city, phone) => asyn
 }
 
 export const getFormUserDataAuth =  (email, password) => async (dispatch) => {
-    // const response = await fetch('http://87.249.49.53:3001/signUp', {
+    // const response = await fetch('https://87.249.49.53:3001/signUp', {
     //     method: 'POST',
     //     headers: {
     //         'Content-Type': 'application/json',
