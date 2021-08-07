@@ -1,7 +1,6 @@
 import style from './PersonalArea.module.css'
 import styleContainer from '../Container/container.module.css'
 
-
 function PersonalArea() {
 
     return (
@@ -10,7 +9,14 @@ function PersonalArea() {
                 <div className={styleContainer.container + ' ' + style.containerPersonalData}>
 
                     <div className={style.personalData_avatar}>
-                        <div className={style.personalData_img}>
+                        <div className={style.personalData_imgBg}>
+                            {/* <img className={style.personalData_imgContent} src="" alt="personal avatar" /> */}
+                            <div className={style.personalDat_updateImg}>
+                                <div className={style.fon}></div>
+                                <div class={style.updateImg}>
+                                    <input class={style.personalDat_FileInput} type="file" accept="image/jpeg,image/png,image/gif" />
+                                </div>
+                            </div>
                         </div>
                         <div className={style.personalData_name}>Ivan</div>
                     </div>
