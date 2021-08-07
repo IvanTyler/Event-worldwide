@@ -1,10 +1,11 @@
 import './App.css';
-import styleContainer from './Components/Container/container.module.css'
 import Header from './Components/Header/Header';
 import SignUp from './Components/SignUp/SignUp';
 import SignIn from './Components/SignIn/SignIn';
 import PosterList from './Components/PosterList/PosterList';
 import SearchForm from './Components/SearchForm/SearchForm';
+import PersonalArea from './Components/PersonalArea/PersonalArea';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,7 +21,6 @@ function App() {
       <Router>
         <Header />
         <main>
-          <div className={styleContainer.container}>
             <Switch>
 
               <Route exact path="/">
@@ -39,9 +39,11 @@ function App() {
                 <SearchForm />
               </Route>
 
-              <PosterList />
+              <Route exact path="/PersonalArea">
+                <PersonalArea />
+              </Route>
+
             </Switch>
-          </div>
         </main>
       </Router>
     </div>

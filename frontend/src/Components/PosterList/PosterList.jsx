@@ -4,10 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import { getRandomEventPoster } from '../../redux/actions/eventAC';
 import Poster from '../Poster/Poster';
+import styleContainer from '../Container/container.module.css'
 
 
 
-function PosterList () {
+function PosterList() {
 
   const posterList = useSelector(state => state.event);
   const dispatch = useDispatch()
@@ -17,15 +18,15 @@ function PosterList () {
   }, [])
 
 
-  return(
-    <Carousel autoplay>
-      
-      {posterList.map(el =>
+  return (
+    <div className={styleContainer.container}>
+      <Carousel autoplay>
+        {posterList.map(el =>
           <Poster key={el.id} id={el.id} img={el.images[5].url} title={el.name}>
           </Poster>
         )}
-  
-  </Carousel>
+      </Carousel>
+    </div>
   )
 }
 

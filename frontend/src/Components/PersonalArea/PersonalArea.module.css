@@ -1,0 +1,72 @@
+.containerPersonalData {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1000px;
+    background-color: #ebf3f5;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.formPersonalData_generalInformation {
+    background-color: rgba(117, 190, 218, 0.4);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.personalData_img {
+    width: 200px;
+    height: 200px;
+    background-image: url('https://www.gravatar.com/avatar/1336aff9fea5221a52cbae53e5eb061c?size=200&d=https%3A%2F%2Fsalesforce-developer.ru%2Fwp-content%2Fuploads%2Favatars%2Fno-avatar.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.blockPersonalData_country {
+    display: flex;
+}
+
+.labelFormPersonalData {
+    width: 140px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.labelFormPersonalData::after {
+    content: "*";
+    display: inline-block;
+    height: 15px;
+    margin-left: 4px;
+    color: #ff504f;
+}
+
+.formPersonalDataText {
+    font-size: 17px;
+    line-height: 14px;
+    font-weight: 700;
+}
+
+.personalDataItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.personalDataItem:not(:last-of-type) {
+    margin-bottom: 10px;
+}
+
+.blockPersonalDataText {
+    border: solid 1px #444;
+    background-color: transparent;
+    font-size: 17px;
+    line-height: 14px;
+    margin-top: 8px;
+    padding: 5px 8px;
+}
+
+.blockPersonalDataText.sity {
+    width: 450px;
+    max-width: 100%;
+    background-color: #fff;
+}
