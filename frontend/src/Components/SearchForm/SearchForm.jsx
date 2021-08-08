@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   Form,
   Input,
@@ -26,6 +26,7 @@ function SearchForm() {
 
   const submitHandler = (formData) => {
     dispatch(getEventsByParams(formData))
+    // придумать как очищать форму после отправки данных
     // setTodoInput('')
   }
 
@@ -54,9 +55,7 @@ function SearchForm() {
         <Form.Item label="Город" name='city'>
           <Input />
         </Form.Item>
-        <Form.Item label="Укажите ключевое слово" name='keyword'>
-          <Input />
-        </Form.Item>
+
         <Form.Item label="Категория" name='classificationName'>
           <Select>
             <Select.Option value="Sports">Спорт</Select.Option>

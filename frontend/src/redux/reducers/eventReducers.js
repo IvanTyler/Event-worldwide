@@ -1,4 +1,4 @@
-import { GET_EVENTS, GET_EVENTS_BY_PARAMS } from "../types/eventTypes";
+import { GET_EVENTS, GET_EVENTS_BY_PARAMS, GET_EVENTS_QUICK } from "../types/eventTypes";
 
 function eventReducer(state = [], action) {
 
@@ -6,8 +6,11 @@ function eventReducer(state = [], action) {
     case GET_EVENTS:
       return action.payload;
 
-      case GET_EVENTS_BY_PARAMS:
-        return action.payload;
+    case GET_EVENTS_BY_PARAMS:
+      return action.payload;
+
+    case GET_EVENTS_QUICK:
+      return action.payload;
 
     default:
       return state;

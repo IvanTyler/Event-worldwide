@@ -18,6 +18,7 @@ function Header() {
                             <li className={style.headerMenuItem}>
                                 <Link className={style.headerMenuLink} to="/">Главная</Link>
                                 {user && <Link className={style.headerMenuLink} to="/search">Поиск событий</Link>}
+                                <Link className={style.headerMenuLink} to="/quicksearch">Быстрый поиск</Link>
                             </li>
                             <li className={style.headerMenuItem}>
                                 <Link className={style.headerMenuLink} to="/personalArea">Личный кабинет</Link>

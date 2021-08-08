@@ -5,6 +5,8 @@ import SignUp from './Components/SignUp/SignUp';
 import SignIn from './Components/SignIn/SignIn';
 import PosterList from './Components/PosterList/PosterList';
 import SearchForm from './Components/SearchForm/SearchForm';
+import QuickSearchContainer from './Components/QuickSearchContainer/QuickSearchContainer';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -37,6 +39,10 @@ function App() {
 
               <Route exact path="/search">
                 <SearchForm />
+              </Route>
+
+              <Route exact path="/quicksearch">
+                <QuickSearchContainer />
               </Route>
 
               <PosterList />
