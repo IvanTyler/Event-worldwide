@@ -56,4 +56,8 @@ export const getFormUserDataAuth =  (email, password) => async (dispatch) => {
     console.log('auth data --->', email, password)
 }
 
+export const saveUserDataPersonalArea = (personalDataUser) => async (dispatch) => {
+    console.log('action --->', personalDataUser)
+}
+
 export default { addUser, getFormUserData }

@@ -1,28 +1,116 @@
 import style from './PersonalArea.module.css'
 import styleContainer from '../Container/container.module.css'
 import CountryItem from '../CountryItem/CountryItem'
+import { useDispatch } from 'react-redux';
+import { saveUserDataPersonalArea } from '../../redux/actions/userAC'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 
 function PersonalArea() {
-    
-    const divSelectCountry = useRef(null)
-
     let countryList = [
         {
             id: 1,
-            title: "Москва",
+            sity: "Москва",
         },
         {
             id: 2,
-            title: "Санкт-Петербург",
+            sity: "Санкт-Петербург",
         },
         {
             id: 3,
-            title: "Тверь",
+            sity: "Тверь",
+        },
+        {
+            id: 4,
+            sity: "Саратов",
+        },
+        {
+            id: 5,
+            sity: "Омск",
+        },
+        {
+            id: 6,
+            sity: "Ивантеевка",
+        },
+        {
+            id: 7,
+            sity: "Балашиха",
+        },
+        {
+            id: 8,
+            sity: "Пермь",
+        },
+        {
+            id: 9,
+            sity: "Мытищи",
         },
     ]
+
+    const dispatch = useDispatch()
+
+    const [countrySelectCurrent, setCountrySelectCurrent] = useState(countryList[0].sity)
+    const [countrySelectItems, setCountrySelectItems] = useState(false)
+    const [buttonUpdate, setButtonUpdate] = useState(false)
+
+    const [editName, setEditName] = useState('Ivan')
+    const [editEmail, setEditEmail] = useState('Ivan@4566.ru')
+    const [editPassword, setEditPassword] = useState('as324234234234')
+    const [editPhone, setEditPhone] = useState('8 455 455 45 45')
+
+
+    const divSelectCountry = useRef(null)
+
+
+    const editNameUser = useRef(null)
+    const editEmailUser = useRef(null)
+    const editPasswordUser = useRef(null)
+    const editPhoneUser = useRef(null)
+
+
+    const showBlockCountryes = () => {
+        setCountrySelectItems(true)
+        if (countrySelectItems === true) {
+            setCountrySelectItems(false)
+        } else {
+            setCountrySelectItems(true)
+        }
+    }
+
+
+    const editUserData = () => {
+        editNameUser.current.removeAttribute('readonly')
+        editEmailUser.current.removeAttribute('readonly')
+        editPasswordUser.current.removeAttribute('readonly')
+        editPhoneUser.current.removeAttribute('readonly')
+
+        editNameUser.current.classList.add(style.showEdit)
+        editEmailUser.current.classList.add(style.showEdit)
+        editPasswordUser.current.classList.add(style.showEdit)
+        editPhoneUser.current.classList.add(style.showEdit)
+
+        setButtonUpdate(true)
+    }
+
+    const saveUserData = () => {
+        editNameUser.current.setAttribute("readonly", true)
+        editEmailUser.current.setAttribute("readonly", true)
+        editPasswordUser.current.setAttribute("readonly", true)
+        editPhoneUser.current.setAttribute("readonly", true)
+
+        editNameUser.current.classList.remove(style.showEdit)
+        editEmailUser.current.classList.remove(style.showEdit)
+        editPasswordUser.current.classList.remove(style.showEdit)
+        editPhoneUser.current.classList.remove(style.showEdit)
+    }
+
+    const submitHandler = (event) => {
+        event.preventDefault()
+        const formData = Object.fromEntries(new FormData(event.target))
+        const formDataEdit = { ...formData, sity: countrySelectCurrent }
+        dispatch(saveUserDataPersonalArea(formDataEdit))
+        setButtonUpdate(false)
+    }
 
     return (
         <>
@@ -41,41 +129,53 @@ function PersonalArea() {
                         </div>
                         <div className={style.personalData_name}>Ivan</div>
                     </div>
-                    <form className={style.formPersonalData_generalInformation} action="">
+
+                    <form onSubmit={submitHandler} className={style.formPersonalData_generalInformation} action="">
                         <div className={style.personalDataItem + ' ' + style.blockPersonalData_country}>
                             <label className={style.formPersonalData_labelCountry + ' ' + style.labelFormPersonalData} htmlFor="country">
                                 <span className={style.formPersonalDataText}>Country</span>
                             </label>
-                            <div ref={divSelectCountry} className={style.blockPersonalDataText + ' ' + style.sity} id="country">Москва</div>
-                            <div className={style.CountrySelect}>
-                                {
-                                    countryList.map((sity) => <CountryItem
-                                        key={sity.id}
-                                        id={sity.id}
-                                        title={sity.title}
-                                        divSelectCountry={divSelectCountry}
-                                    />)
-                                }
+                            <div className={style.wrapperSelectCountry}>
+                                <div ref={divSelectCountry} onClick={() => showBlockCountryes()} className={style.blockPersonalDataText + ' ' + style.sity} id="country">Москва</div>
+                                {countrySelectItems && <div className={style.CountrySelect}>
+                                    {
+                                        countryList.map((item) => <CountryItem
+                                            key={item.id}
+                                            id={item.id}
+                                            sity={item.sity}
+                                            divSelectCountry={divSelectCountry}
+                                            setCountrySelectCurrent={setCountrySelectCurrent}
+                                        />)
+                                    }
+                                </div>}
                             </div>
                         </div>
                         <div className={style.personalDataItem + ' ' + style.wrapperPersonalData_firsName}>
                             <label className={style.formPersonalData_labelFirsName + ' ' + style.labelFormPersonalData} htmlFor="firstName">
                                 <span className={style.formPersonalDataText}>First Name</span>
                             </label>
-                            <div className={style.blockPersonalDataText}>Ivan</div>
+                            <input ref={editNameUser} className={style.blockPersonalDataText} type="text" name="name" readOnly="readonly" onChange={(event) => setEditName(event.target.value)} value={editName} />
                         </div>
-                        <div className={style.personalDataItem + ' ' + style.wrapperPersonalData_firsName}>
+                        <div className={style.personalDataItem + ' ' + style.wrapperPersonalData_email}>
                             <label className={style.formPersonalData_labelEmail + ' ' + style.labelFormPersonalData} htmlFor="email">
                                 <span className={style.formPersonalDataText}>Email</span>
                             </label>
-                            <div className={style.blockPersonalDataText}>Ivan@mail.ru</div>
+                            <input ref={editEmailUser} className={style.blockPersonalDataText} type="email" name="email" readOnly="readonly" onChange={(event) => setEditEmail(event.target.value)} value={editEmail} />
+                        </div>
+                        <div className={style.personalDataItem + ' ' + style.wrapperPersonalData_password}>
+                            <label className={style.formPersonalData_labelEmail + ' ' + style.labelFormPersonalData} htmlFor="email">
+                                <span className={style.formPersonalDataText}>Password</span>
+                            </label>
+                            <input ref={editPasswordUser} className={style.blockPersonalDataText} type="password" name="password" readOnly="readonly" onChange={(event) => setEditPassword(event.target.value)} value={editPassword} />
                         </div>
                         <div className={style.personalDataItem + ' ' + style.wrapperPersonalData_phone}>
                             <label className={style.formPersonalData_labelphone + ' ' + style.labelFormPersonalData} htmlFor="phone">
                                 <span className={style.formPersonalDataText}>Phone</span>
                             </label>
-                            <div className={style.blockPersonalDataText}>8 910 333 33 33</div>
+                            <input ref={editPhoneUser} className={style.blockPersonalDataText} type="tel" name="phone" readOnly="readonly" onChange={(event) => setEditPhone(event.target.value)} value={editPhone} />
                         </div>
+                        {buttonUpdate && <button onClick={() => saveUserData()} className={style.blockPersonalDataSubmit} type="submit">Обновить</button>}
+                        <span onClick={() => editUserData()} className={style.blockPersonalDataSubmit + ' ' + style.blockPersonalDataEdit}>Редактировать</span>
                     </form>
 
                 </div>
