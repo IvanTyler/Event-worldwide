@@ -1,8 +1,11 @@
 import './App.css';
+import styleContainer from './Components/Container/container.module.css'
 import Header from './Components/Header/Header';
 import SignUp from './Components/SignUp/SignUp';
 import SignIn from './Components/SignIn/SignIn';
 import PosterList from './Components/PosterList/PosterList';
+import SearchForm from './Components/SearchForm/SearchForm';
+import QuickSearchContainer from './Components/QuickSearchContainer/QuickSearchContainer';
 
 import {
   BrowserRouter as Router,
@@ -14,7 +17,7 @@ import { useEffect } from 'react';
 
 function App() {
   useEffect(()=> {
-    axios.get('http://ikiro.ru/api/signup/')
+    axios.get('https://ikiro.ru/api/')
     .then(res => console.log(res.data, 'DEFENDER'))
     .catch(err => console.log('========>>>', err))
   })
@@ -28,22 +31,34 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <Switch>
-          
-          <Route exact path="/">
-            <PosterList />
-          </Route>
+        <main>
+          <div className={styleContainer.container}>
+            <Switch>
 
-          <Route exact path="/signUp">
-            <SignUp />
-          </Route>
+              <Route exact path="/">
+                <PosterList />
+              </Route>
 
-          <Route exact path="/signIn">
-            <SignIn />
-          </Route>
+              <Route exact path="/signUp">
+                <SignUp />
+              </Route>
 
+              <Route exact path="/signIn">
+                <SignIn />
+              </Route>
 
-        </Switch>
+              <Route exact path="/search">
+                <SearchForm />
+              </Route>
+
+              <Route exact path="/quicksearch">
+                <QuickSearchContainer />
+              </Route>
+
+              <PosterList />
+            </Switch>
+          </div>
+        </main>
       </Router>
     </div>
   );

@@ -1,3 +1,3 @@
 export const GET_EVENTS = 'GET_EVENTS';
-
-
+export const GET_EVENTS_BY_PARAMS = 'GET_EVENTS_BY_PARAMS'
+export const GET_EVENTS_QUICK = 'GET_EVENTS_QUICK'

@@ -40,23 +40,23 @@ export const getFormUserData = (userName, email, password, city, phone) => async
 };
 
 export const getFormUserDataAuth = (email, password) => async (dispatch) => {
-  // const response = await fetch('https://87.249.49.53:3001/signUp', {
-  //     method: 'POST',
-  //     headers: {
-  //         'Content-Type': 'application/json',
-  //     },
-  //     credentials: 'include',
-  //     body: JSON.stringify({
-  //         email,
-  //         password,
-  //     })
-  // })
-  // const data = await response.json()
-  // console.log(data)
-  // dispatch(addUser(data.user))
-  // dispatch(addID(data.id))
+  const response = await fetch('https://ikiro.ru/api/signin', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+          email,
+          password,
+      })
+  })
+  const data = await response.json()
+  console.log(data)
+  dispatch(addUser(data.user))
+  dispatch(addID(data.id))
+}
 
-  console.log('auth data --->', email, password);
-};
 
-export default { addUser, getFormUserData };
+
+// export default { addUser, getFormUserData, getFormUserDataAuth }
