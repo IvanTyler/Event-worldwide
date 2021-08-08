@@ -1,7 +1,7 @@
 import { List, Avatar } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 
-function QuickEventList () {
+function QuickSearchEventList () {
  
   const eventList = useSelector(state => state.event);
   console.log(eventList[0]);
@@ -23,6 +23,6 @@ return(
 )
 }
 
-export default QuickEventList;
+export default QuickSearchEventList;
 
   

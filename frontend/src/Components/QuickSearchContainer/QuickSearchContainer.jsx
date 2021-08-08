@@ -1,12 +1,11 @@
-import QuickEventList from "../QuickEventList/QuickEventList";
-import SearchQuickForm from "../QuickSearchForm/QuickSearchForm";
-
+import QuickSearchForm from "../QuickSearchForm/QuickSearchForm";
+import QuickSearchEventList from "../QuickSearchEventList/QuickSearchEventList";
 function QuickSearchContainer() {
 
   return (
     <>
-      <SearchQuickForm />
-      <QuickEventList />
+      <QuickSearchForm />
+      <QuickSearchEventList />
     </>
   )
 }
