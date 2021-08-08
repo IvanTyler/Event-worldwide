@@ -1,7 +1,28 @@
 import style from './PersonalArea.module.css'
 import styleContainer from '../Container/container.module.css'
+import CountryItem from '../CountryItem/CountryItem'
+
+import { useRef } from 'react'
+
 
 function PersonalArea() {
+    
+    const divSelectCountry = useRef(null)
+
+    let countryList = [
+        {
+            id: 1,
+            title: "Москва",
+        },
+        {
+            id: 2,
+            title: "Санкт-Петербург",
+        },
+        {
+            id: 3,
+            title: "Тверь",
+        },
+    ]
 
     return (
         <>
@@ -25,7 +46,17 @@ function PersonalArea() {
                             <label className={style.formPersonalData_labelCountry + ' ' + style.labelFormPersonalData} htmlFor="country">
                                 <span className={style.formPersonalDataText}>Country</span>
                             </label>
-                            <div className={style.blockPersonalDataText + ' ' + style.sity} id="country">Москва</div>
+                            <div ref={divSelectCountry} className={style.blockPersonalDataText + ' ' + style.sity} id="country">Москва</div>
+                            <div className={style.CountrySelect}>
+                                {
+                                    countryList.map((sity) => <CountryItem
+                                        key={sity.id}
+                                        id={sity.id}
+                                        title={sity.title}
+                                        divSelectCountry={divSelectCountry}
+                                    />)
+                                }
+                            </div>
                         </div>
                         <div className={style.personalDataItem + ' ' + style.wrapperPersonalData_firsName}>
                             <label className={style.formPersonalData_labelFirsName + ' ' + style.labelFormPersonalData} htmlFor="firstName">

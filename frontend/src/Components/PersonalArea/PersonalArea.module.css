@@ -1,10 +1,14 @@
+.sectionPersonalArea {
+    padding-top: 30px;
+}
+
 .containerPersonalData {
     display: flex;
     justify-content: space-between;
     max-width: 1000px;
-    background-color: #ebf3f5;
+    background: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 20px;
-    margin-top: 30px;
 }
 
 .personalData_avatar {
@@ -20,7 +24,7 @@
 }
 
 .formPersonalData_generalInformation {
-    background-color: rgba(117, 190, 218, 0.4);
+    background-color: rgba(0, 118, 255, 0.1);
     padding: 15px;
     border-radius: 5px;
 }
@@ -112,6 +116,7 @@
     font-size: 17px;
     line-height: 14px;
     font-weight: 700;
+    color: #737373;
 }
 
 .personalDataItem {
@@ -136,4 +141,8 @@
     width: 450px;
     max-width: 100%;
     background-color: #fff;
+}
+
+.CountrySelect {
+    box-shadow: 0px 2px 3px rgb(0 0 0 / 20%);
 }
