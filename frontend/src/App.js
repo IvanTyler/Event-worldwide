@@ -7,6 +7,7 @@ import SearchForm from './Components/SearchForm/SearchForm';
 import PersonalArea from './Components/PersonalArea/PersonalArea';
 import QuickSearchContainer from './Components/QuickSearchContainer/QuickSearchContainer';
 import SearchContainer from './Components/SearchContainer/SearchContainer';
+import DescriptionProject from './Components/DescriptionProject/DescriptiomProject';
 
 import {
   BrowserRouter as Router,
@@ -36,6 +37,7 @@ function App() {
             <Switch>
 
               <Route exact path="/">
+                <DescriptionProject />
                 <PosterList />
               </Route>
               

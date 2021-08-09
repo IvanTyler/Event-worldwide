@@ -58,14 +58,10 @@ function PersonalArea() {
     const [editPassword, setEditPassword] = useState('as324234234234')
     const [editPhone, setEditPhone] = useState('8 455 455 45 45')
 
+    const [showHidePassword, setShowHidePassword] = useState(false)
+
 
     const divSelectCountry = useRef(null)
-
-
-    const editNameUser = useRef(null)
-    const editEmailUser = useRef(null)
-    const editPasswordUser = useRef(null)
-    const editPhoneUser = useRef(null)
 
 
     const showBlockCountryes = () => {
@@ -77,6 +73,10 @@ function PersonalArea() {
         }
     }
 
+    const editNameUser = useRef(null)
+    const editEmailUser = useRef(null)
+    const editPasswordUser = useRef(null)
+    const editPhoneUser = useRef(null)
 
     const editUserData = () => {
         editNameUser.current.removeAttribute('readonly')
@@ -110,6 +110,21 @@ function PersonalArea() {
         const formDataEdit = { ...formData, sity: countrySelectCurrent }
         dispatch(saveUserDataPersonalArea(formDataEdit))
         setButtonUpdate(false)
+    }
+
+    const showPasswordUser = useRef(null)
+
+    const showPassword = () => {
+        
+        if (showHidePassword === false) {
+            editPasswordUser.current.type = 'text';
+            showPasswordUser.current.classList.add(style.showPassword)
+            setShowHidePassword(true)
+        } else if (showHidePassword === true) {
+            editPasswordUser.current.type = 'password';
+            showPasswordUser.current.classList.remove(style.showPassword)
+            setShowHidePassword(false)
+        }
     }
 
     return (
@@ -166,7 +181,10 @@ function PersonalArea() {
                             <label className={style.formPersonalData_labelEmail + ' ' + style.labelFormPersonalData} htmlFor="email">
                                 <span className={style.formPersonalDataText}>Password</span>
                             </label>
-                            <input ref={editPasswordUser} className={style.blockPersonalDataText} type="password" name="password" readOnly="readonly" onChange={(event) => setEditPassword(event.target.value)} value={editPassword} />
+                            <div className={style.wrapperPassword}>
+                                <span ref={showPasswordUser} onClick={() => showPassword()} className={style.hidePassword}></span>
+                                <input ref={editPasswordUser} className={style.blockPersonalDataText} type="password" name="password" readOnly="readonly" onChange={(event) => setEditPassword(event.target.value)} value={editPassword} />
+                            </div>
                         </div>
                         <div className={style.personalDataItem + ' ' + style.wrapperPersonalData_phone}>
                             <label className={style.formPersonalData_labelphone + ' ' + style.labelFormPersonalData} htmlFor="phone">
