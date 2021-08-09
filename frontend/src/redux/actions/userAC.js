@@ -14,7 +14,7 @@ export const addID = (id) => {
   };
 };
 
-export const getFormUserData = (userName, email, password, city, phone) => async (dispatch) => {
+export const getFormUserData = (userName, password, email, city, phone) => async (dispatch) => {
   try {
     const response = await fetch('https://ikiro.ru/api/signup/', {
       method: 'POST',
@@ -31,7 +31,7 @@ export const getFormUserData = (userName, email, password, city, phone) => async
       }),
     });
     const data = await response.json();
-    console.log(data);
+    console.log(data, 'TYT======================>>');
     dispatch(addUser(data.user));
     dispatch(addID(data.id));
   } catch (error) {
@@ -40,6 +40,7 @@ export const getFormUserData = (userName, email, password, city, phone) => async
 };
 
 export const getFormUserDataAuth = (email, password) => async (dispatch) => {
+  console.log(email, password);
   const response = await fetch('https://ikiro.ru/api/signin', {
     method: 'POST',
     headers: {
@@ -58,3 +59,8 @@ export const getFormUserDataAuth = (email, password) => async (dispatch) => {
 };
 
 // export default { addUser, getFormUserData, getFormUserDataAuth }
+export const saveUserDataPersonalArea = (personalDataUser) => async (dispatch) => {
+  console.log('action --->', personalDataUser);
+};
+
+export default { addUser, getFormUserData };
