@@ -2,11 +2,13 @@ import style from './SignUp.module.css'
 import { useState, useRef } from 'react'
 import { useDispatch } from 'react-redux';
 import styleContainer from '../Container/container.module.css'
+import { useHistory } from "react-router-dom";
 
 import { getFormUserData } from '../../redux/actions/userAC';
 
 function SignUp() {
     const dispatch = useDispatch()
+    const history = useHistory();
 
     const selectCity = useRef(null)
 
@@ -29,6 +31,9 @@ function SignUp() {
         setInputPhone(event.target.value)
     }
 
+    const HomeButton = () => {
+        history.push("/");
+    }
 
     const submitHandler = (event) => {
         event.preventDefault()
@@ -39,7 +44,9 @@ function SignUp() {
         setInputUser('')
         setInputEmail('')
         setInputPassword('')
+        HomeButton()
     }
+
 
     return (
         <>
