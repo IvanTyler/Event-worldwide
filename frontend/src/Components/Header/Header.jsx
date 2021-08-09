@@ -8,22 +8,23 @@ import { useSelector } from 'react-redux';
 function Header() {
     const user = useSelector((state) => state.user.user)
     console.log(user)
-    
+
     return (
         <>
             <header className={style.header}>
-                <div className={`${styleContainer.container} ${style.containerHeader}` }>
+                <div className={`${styleContainer.container} ${style.containerHeader}`}>
                     <nav className={style.navHeader}>
                         <ul className={style.headerMenu}>
                             <li className={style.headerMenuItem}>
                                 <Link className={style.headerMenuLink} to="/">Главная</Link>
                                 {user && <Link className={style.headerMenuLink} to="/search">Поиск событий</Link>}
-                                <Link className={style.headerMenuLink} to="/quicksearch">Быстрый поиск</Link>
+                                {user && <Link className={style.headerMenuLink} to="/quicksearch">Быстрый поиск</Link>}
                             </li>
                             <li className={style.headerMenuItem}>
-                                <Link className={style.headerMenuLink} to="/personalArea">Личный кабинет</Link>
+                                {user && <Link className={style.headerMenuLink} to="/personalArea">Личный кабинет</Link>}
                                 <Link className={style.headerMenuLink} to="/signUp">Регистрация</Link>
                                 <Link className={style.headerMenuLink} to="/signIn">Авторизация</Link>
+                                {user && <Link className={style.headerMenuLink} to="/logout">Выйти</Link>}
                             </li>
                         </ul>
                     </nav>
