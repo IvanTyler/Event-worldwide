@@ -1,0 +1,29 @@
+.containerDescription {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.sectionDescriptionProject {
+    height: 548px;
+    background-image: url('./img/dostoprimechatelnosti-world.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.sectionDescriptionTitle {
+    display: inline-block;
+    background-color: rgba(14, 175, 170, 0.6);
+    color: #fff;
+    padding: 0 15px;
+    font-size: 45px;
+    line-height: 48px;
+    font-weight: 700;
+}
+
+.sectionDescriptionText {
+    background-color: rgba(14, 175, 170, 0.6);
+    color: #fff;
+}
