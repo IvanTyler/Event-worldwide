@@ -28,7 +28,7 @@ const user = useSelector(state => state.user.id)
  console.log(user)
 
   const addSubscribe = (user) => {
-    dispatch(addOneSubscribe({showEventData()}))
+    dispatch(addOneSubscribe(showEventData()))
   }
 
   return (
