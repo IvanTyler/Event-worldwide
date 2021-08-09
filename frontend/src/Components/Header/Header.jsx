@@ -3,7 +3,7 @@ import styleContainer from '../Container/container.module.css';
 
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteUser } from '../../redux/actions/userAC';
+import { logout } from '../../redux/actions/userAC';
 
 
 function Header() {
@@ -12,7 +12,7 @@ function Header() {
     console.log(user);
 
     const logoutSession = () => {
-        dispatch(deleteUser())
+        dispatch(logout(''))
     }
 
     return (

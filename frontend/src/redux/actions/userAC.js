@@ -70,11 +70,11 @@ export const saveUserDataPersonalArea = (personalDataUser) => async (dispatch) =
 
 export const logout = (clearUser) => async (dispatch) => {
     const response = await fetch('https://ikiro.ru/api/logout', {
-
+        credentials: 'include',
     })
-        dispatch(deleteUser(clearUser));
+    dispatch(deleteUser(clearUser));
     const status = await response.json();
     console.log('server status --->>>', status)
 }
 
-export default { addUser, getFormUserData, deleteUser };
+export default { addUser, getFormUserData, logout };
