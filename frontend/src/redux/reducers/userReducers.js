@@ -11,6 +11,7 @@ const userReducer = (state = initState, action) => {
             return { ...state, user: action.payload }
         case ADD_ID:
             return { ...state, id: action.payload }
+            
         default:
             return state
     }

@@ -7,6 +7,9 @@ import { useSelector } from 'react-redux';
 function Header() {
   const user = useSelector((state) => state.user.id);
   console.log(user);
+  // const dellSessionHandler  = () => {
+  //   dispatch()
+  // }
 
   return (
     <>
@@ -18,27 +21,25 @@ function Header() {
                 <Link className={style.headerMenuLink} to="/">
                   Главная
                 </Link>
-                {user ? (
-                  <>
-                    <Link className={style.headerMenuLink} to="/search">
-                      Поиск событий
-                    </Link>
-                    <Link className={style.headerMenuLink} to="/quicksearch">
-                      Быстрый поиск
-                    </Link>
-                  </>
-                ) : (
-                  console.log(123)
+                {user && (
+                  <Link className={style.headerMenuLink} to="/search">
+                    Поиск событий
+                  </Link>
                 )}
-                ;
-                  </li>
-                  <li>
+                {user && (
+                  <Link className={style.headerMenuLink} to="/quicksearch">
+                    Быстрый поиск
+                  </Link>
+                )}
+              </li>
+              <li className={style.headerMenuItem}>
                 {user ? (
                   <>
                     <Link className={style.headerMenuLink} to="/personalArea">
                       Личный кабинет
                     </Link>
                     <Link className={style.headerMenuLink} to="/logout">
+                    {/* onClick={() => dellSession} */}
                       Выйти
                     </Link>
                   </>
@@ -52,36 +53,7 @@ function Header() {
                     </Link>
                   </>
                 )}
-                </li>
-                {/* {user && (
-                  <Link className={style.headerMenuLink} to="/search">
-                    Поиск событий
-                  </Link>
-                )}{' '}
-                {user && (
-                  <Link className={style.headerMenuLink} to="/quicksearch">
-                    Быстрый поиск
-                  </Link>
-                )} */}
-              {/* </li>
-              <li className={style.headerMenuItem}>
-                {user && (
-                  <Link className={style.headerMenuLink} to="/personalArea">
-                    Личный кабинет
-                  </Link>
-                )}
-                <Link className={style.headerMenuLink} to="/signUp">
-                  Регистрация
-                </Link>
-                <Link className={style.headerMenuLink} to="/signIn">
-                  Авторизация
-                </Link>
-                {user && (
-                  <Link className={style.headerMenuLink} to="/logout">
-                    Выйти
-                  </Link>
-                )}
-              </li> */}
+              </li>
             </ul>
           </nav>
         </div>
