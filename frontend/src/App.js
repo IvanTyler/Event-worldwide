@@ -17,7 +17,7 @@ import {
 import axios from 'axios';
 
 function App() {
-  axios.get('http://87.249.49.53:3001/');
+  // axios.get('http://87.249.49.53:3001/');
 
   return (
     <div className="App">

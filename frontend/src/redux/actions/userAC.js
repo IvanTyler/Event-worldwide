@@ -16,7 +16,7 @@ export const addID = (id) => {
 }
 
 export const getFormUserData =  (userName, email, password, city, phone) => async (dispatch) => {
-    const response = await fetch('http://87.249.49.53:3001/signUp', {
+    const response = await fetch('https://ikiro.ru/api/signUp', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -32,7 +32,9 @@ export const getFormUserData =  (userName, email, password, city, phone) => asyn
     })
     const data = await response.json()
     console.log(data)
-    dispatch(addUser(data.user))
+    console.log('user --->>>', data.Name)
+
+    dispatch(addUser(data.Name))
     dispatch(addID(data.id))
 }
 
