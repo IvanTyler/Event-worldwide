@@ -13,6 +13,7 @@ const QuickSearchForm = () => {
   };
 
   const submitHandler = (formData) => {
+    console.log(formData);
     dispatch(getEventsByKeyword(formData))
     // придумать как очищать форму после отправки данных
   }
