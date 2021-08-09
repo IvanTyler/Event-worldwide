@@ -6,8 +6,12 @@ import { saveUserDataPersonalArea } from '../../redux/actions/userAC'
 import ImageUploading from 'react-images-uploading';
 import axios from 'axios'
 
+
 import { useRef, useState } from 'react'
 
+const ImageThumb = ({ image }) => {
+    return <img src={URL.createObjectURL(image)} alt={image.name} />;
+};
 
 function PersonalArea() {
     let countryList = [
@@ -117,7 +121,7 @@ function PersonalArea() {
     const showPasswordUser = useRef(null)
 
     const showPassword = () => {
-        
+
         if (showHidePassword === false) {
             editPasswordUser.current.type = 'text';
             showPasswordUser.current.classList.add(style.showPassword)
@@ -147,7 +151,7 @@ function PersonalArea() {
 
                     <div className={style.personalData_avatar}>
                         <div className={style.personalData_imgBg}>
-                            <img className={style.personalData_imgContent} src="" alt="personal avatar" />
+                            {imgUpload && <ImageThumb className={style.personalData_imgContent} image={imgUpload}  />}
                             <div className={style.personalDat_updateImg}>
                                 <div className={style.fon}></div>
                                 <div class={style.updateImg}>
@@ -155,7 +159,7 @@ function PersonalArea() {
                                 </div>
                             </div>
                         </div>
-                                    <button>Загрузить img</button>
+                        <button>Загрузить img</button>
                         <div className={style.personalData_name}>Ivan</div>
                     </div>
 
