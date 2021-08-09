@@ -37,8 +37,6 @@ function SignUp() {
 
     const submitHandler = (event) => {
         event.preventDefault()
-        const formData = Object.fromEntries(new FormData(event.target))
-        console.log('--->>>> form data', formData)
         const city = selectCity.current.value
         dispatch(getFormUserData(inputUser, inputPassword, inputEmail, city, inputPhone))
         setInputUser('')
