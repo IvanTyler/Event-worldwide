@@ -38,7 +38,7 @@ function App() {
               <Route exact path="/">
                 <PosterList />
               </Route>
-
+              
               <Route exact path="/signUp">
                 <SignUp />
               </Route>
