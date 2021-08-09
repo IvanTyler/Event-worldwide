@@ -15,9 +15,19 @@ import {
   Route,
 } from "react-router-dom";
 import axios from 'axios';
+import { useEffect } from 'react';
 
 function App() {
-  // axios.get('http://87.249.49.53:3001/');
+  useEffect(()=> {
+    axios.get('https://ikiro.ru/api/')
+    .then(res => console.log(res.data, 'DEFENDER'))
+    .catch(err => console.log('========>>>', err))
+  })
+  // useEffect(()=> {
+  //   axios.get('https://ikiro.ru/XYU/')
+  //   .then(res => console.log(res.data))
+  //   .catch(err => console.log('========>>>', err))
+  // })
 
   return (
     <div className="App">
@@ -30,7 +40,7 @@ function App() {
                 <DescriptionProject />
                 <PosterList />
               </Route>
-
+              
               <Route exact path="/signUp">
                 <SignUp />
               </Route>
