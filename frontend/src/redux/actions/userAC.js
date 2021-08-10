@@ -21,7 +21,7 @@ export const deleteUser = (clearUser) => {
     };
 };
 
-export const getFormUserData = (userName, email, password, city, phone) => async (dispatch) => {
+export const getFormUserData = (userName, password, email,  city, phone) => async (dispatch) => {
     const response = await fetch('https://ikiro.ru/api/signUp', {
         method: 'POST',
         headers: {
@@ -69,12 +69,14 @@ export const saveUserDataPersonalArea = (personalDataUser) => async (dispatch) =
 };
 
 export const logout = (clearUser) => async (dispatch) => {
-    const response = await fetch('https://ikiro.ru/api/logout', {
+    const response = await fetch('https://ikiro.ru/api/logout',
+    {
         credentials: 'include',
-    })
-    dispatch(deleteUser(clearUser));
+    }
+    )
     const status = await response.json();
     console.log('server status --->>>', status)
+    dispatch(deleteUser(clearUser));
 }
 
 export default { addUser, getFormUserData, logout };
