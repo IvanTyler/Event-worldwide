@@ -1,6 +1,6 @@
 import { Form, Input, Button } from 'antd';
 import { useDispatch } from 'react-redux';
-import { getEventsByKeyword } from '../../redux/actions/eventAC';
+import { getEventsByKeyword } from '../../redux/actions/eventquick';
 
 
 const QuickSearchForm = () => {
