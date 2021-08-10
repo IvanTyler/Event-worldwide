@@ -2,7 +2,7 @@ import { Carousel } from 'antd';
 import 'antd/dist/antd.css';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
-import { getRandomEventPoster } from '../../redux/actions/eventAC';
+import { getRandomEventPoster } from '../../redux/actions/posterAC';
 import Poster from '../Poster/Poster';
 import styleContainer from '../Container/container.module.css'
 
@@ -10,7 +10,7 @@ import styleContainer from '../Container/container.module.css'
 
 function PosterList() {
 
-  const posterList = useSelector(state => state.event);
+  const posterList = useSelector(state => state.poster);
   const dispatch = useDispatch()
 
   useEffect(() => {

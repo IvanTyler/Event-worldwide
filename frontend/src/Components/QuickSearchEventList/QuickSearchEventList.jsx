@@ -4,7 +4,7 @@ import QuickSearchItem from '../QuickSearchItem/QuickSearchItem'
 // function QuickEventList () {
 
 function QuickSearchEventList () {
-  const eventList = useSelector(state => state.event);
+  const eventList = useSelector(state => state.eventquick);
   console.log(eventList[0]);
   // console.log(event.performers)
 

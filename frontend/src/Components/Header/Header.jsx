@@ -25,14 +25,20 @@ function Header() {
                                 <Link className={style.headerMenuLink} to="/">
                                     Главная
                                 </Link>
-                                {user ? (
-                                    <>
-                                        <Link className={style.headerMenuLink} to="/search">
+                                <Link className={style.headerMenuLink} to="/search">
                                             Поиск событий
                                         </Link>
                                         <Link className={style.headerMenuLink} to="/quicksearch">
                                             Быстрый поиск
                                         </Link>
+                                {user ? (
+                                    <>
+                                        {/* <Link className={style.headerMenuLink} to="/search">
+                                            Поиск событий
+                                        </Link>
+                                        <Link className={style.headerMenuLink} to="/quicksearch">
+                                            Быстрый поиск
+                                        </Link> */}
                                     </>
                                 ) : (
                                     console.log(123)
