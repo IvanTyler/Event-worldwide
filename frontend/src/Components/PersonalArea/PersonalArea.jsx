@@ -3,9 +3,15 @@ import styleContainer from '../Container/container.module.css'
 import CountryItem from '../CountryItem/CountryItem'
 import { useDispatch } from 'react-redux';
 import { saveUserDataPersonalArea } from '../../redux/actions/userAC'
+import ImageUploading from 'react-images-uploading';
+import axios from 'axios'
+
 
 import { useRef, useState } from 'react'
 
+// const ImageThumb = ({ image }) => {
+//     return <img src={URL.createObjectURL(image)} alt={image.name} />;
+// };
 
 function PersonalArea() {
     let countryList = [
@@ -115,7 +121,7 @@ function PersonalArea() {
     const showPasswordUser = useRef(null)
 
     const showPassword = () => {
-        
+
         if (showHidePassword === false) {
             editPasswordUser.current.type = 'text';
             showPasswordUser.current.classList.add(style.showPassword)
@@ -127,6 +133,13 @@ function PersonalArea() {
         }
     }
 
+    const [imgUpload, setImgUpload] = useState()
+
+    const fileSelectedHandler = (event) => {
+        setImgUpload(event.target.files[0].name)
+    }
+    console.log(imgUpload)
+    
     return (
         <>
             <section className={style.sectionPersonalArea}>
@@ -134,14 +147,15 @@ function PersonalArea() {
 
                     <div className={style.personalData_avatar}>
                         <div className={style.personalData_imgBg}>
-                            {/* <img className={style.personalData_imgContent} src="" alt="personal avatar" /> */}
+                            <img src="" alt="" />
                             <div className={style.personalDat_updateImg}>
                                 <div className={style.fon}></div>
                                 <div class={style.updateImg}>
-                                    <input class={style.personalDat_FileInput} type="file" accept="image/jpeg,image/png,image/gif" />
+                                    <input onChange={fileSelectedHandler} class={style.personalDat_FileInput} type="file" accept="image/jpeg,image/png,image/gif" />
                                 </div>
                             </div>
                         </div>
+                        <button>Загрузить img</button>
                         <div className={style.personalData_name}>Ivan</div>
                     </div>
 

@@ -4,15 +4,23 @@ import styleContainer from '../Container/container.module.css';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../redux/actions/userAC';
+import { useHistory } from "react-router-dom";
 
 
 function Header() {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user.id);
+    const history = useHistory();
+
     console.log(user);
 
     const logoutSession = () => {
         dispatch(logout(''))
+        HomeButton()
+    }
+
+    const HomeButton = () => {
+        history.push("/");
     }
 
     return (
@@ -44,7 +52,7 @@ function Header() {
                                         <Link className={style.headerMenuLink} to="/personalArea">
                                             Личный кабинет
                                         </Link>
-                                        <Link onClick={() => logoutSession()} className={style.headerMenuLink} to="/logout">
+                                        <Link onClick={() => logoutSession()} className={style.headerMenuLink}>
                                             Выйти
                                         </Link>
                                     </>
