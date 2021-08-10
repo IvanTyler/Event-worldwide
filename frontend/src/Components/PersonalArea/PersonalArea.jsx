@@ -9,9 +9,9 @@ import axios from 'axios'
 
 import { useRef, useState } from 'react'
 
-const ImageThumb = ({ image }) => {
-    return <img src={URL.createObjectURL(image)} alt={image.name} />;
-};
+// const ImageThumb = ({ image }) => {
+//     return <img src={URL.createObjectURL(image)} alt={image.name} />;
+// };
 
 function PersonalArea() {
     let countryList = [
@@ -136,14 +136,10 @@ function PersonalArea() {
     const [imgUpload, setImgUpload] = useState()
 
     const fileSelectedHandler = (event) => {
-        console.log(event.target.files[0])
-        setImgUpload(event.target.files[0])
+        setImgUpload(event.target.files[0].name)
     }
-
-    const fileUploadHandler = () => {
-        axios.post()
-    }
-
+    console.log(imgUpload)
+    
     return (
         <>
             <section className={style.sectionPersonalArea}>
@@ -151,7 +147,7 @@ function PersonalArea() {
 
                     <div className={style.personalData_avatar}>
                         <div className={style.personalData_imgBg}>
-                            {imgUpload && <ImageThumb className={style.personalData_imgContent} image={imgUpload}  />}
+                            <img src="" alt="" />
                             <div className={style.personalDat_updateImg}>
                                 <div className={style.fon}></div>
                                 <div class={style.updateImg}>

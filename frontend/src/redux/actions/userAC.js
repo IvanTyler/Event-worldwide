@@ -1,4 +1,4 @@
-import { ADD_USER, ADD_ID, DELETE_USER } from '../types/userTypes';
+import { ADD_USER, ADD_ID, DELETE_USER, DELETE_ID_USER } from '../types/userTypes';
 
 export const addUser = (user) => {
     return {
@@ -18,6 +18,13 @@ export const deleteUser = (clearUser) => {
     return {
         type: DELETE_USER,
         payload: clearUser,
+    };
+};
+
+export const deleteIdUser = (clearIdUser) => {
+    return {
+        type: DELETE_ID_USER,
+        payload: clearIdUser,
     };
 };
 
@@ -73,8 +80,14 @@ export const logout = (clearUser) => async (dispatch) => {
         credentials: 'include',
     })
     dispatch(deleteUser(clearUser));
+    dispatch(deleteIdUser(clearUser));
+
     const status = await response.json();
     console.log('server status --->>>', status)
 }
+
+// export const userImg = (nameImg) => async (dispatch) => {
+//     const response await fetch('')
+// }
 
 export default { addUser, getFormUserData, logout };
