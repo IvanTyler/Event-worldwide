@@ -1,7 +1,13 @@
 const initState = {
-    user: '',
-    id: '',
-    events: '',
+  user: '',
+  id: '',
+  events: '',
+  subscribes: [],
 }
 
+
+
+
 export default initState
+
+
