@@ -23,12 +23,12 @@ export function deleteSubscribe(id) {
   }
 }
 
-export function change(id) {
-  return {
-    type: CHANGE_STATUS,
-    payload: id,
-  }
-}
+// export function change(id) {
+//   return {
+//     type: CHANGE_STATUS,
+//     payload: id,
+//   }
+// }
 
 export const getAllSubscribes = () => async (dispatch) => {
   const subscribes = await axios('http://localhost:3001/api/subscribes');
@@ -46,7 +46,7 @@ export const removeSubscribe = (id) => async (dispatch) => {
   dispatch(deleteSubscribe(id))
 }
 
-export const changeStatus = (id) => async (dispatch) => {
-  await axios.patch('http://localhost:3001/api/subscribes', { id })
-  dispatch(change(id))
-}
+// export const changeStatus = (id) => async (dispatch) => {
+//   await axios.patch('http://localhost:3001/api/subscribes', { id })
+//   dispatch(change(id))
+// }
