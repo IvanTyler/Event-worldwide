@@ -1,6 +1,6 @@
 import { List, Avatar } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
-
+import QuickSearchItem from '../QuickSearchItem/QuickSearchItem'
 // function QuickEventList () {
 
 function QuickSearchEventList () {
@@ -9,19 +9,19 @@ function QuickSearchEventList () {
   // console.log(event.performers)
 
 return(
-<List
-    itemLayout="horizontal"
-    dataSource={eventList}
-    renderItem={event => (
-      <List.Item>
-        <List.Item.Meta
-          avatar={<Avatar src={event.performers[0].image} />}
-          title={<a href={event.url}>{event.short_title}</a>}
-          description={event.datetime_local}
-        />
-      </List.Item>
-    )}
-  />
+<>
+    {eventList.map((event)=> <QuickSearchItem 
+       key={event.id}
+       id={event.id}
+       url={event.url}
+       avatar={<Avatar src={event.performers[0].image} />}
+       title={<a href={event.url}>{event.short_title}</a>}
+       description={event.datetime_local}
+       />)}
+    </>
+
+
+
 )
 }
 
