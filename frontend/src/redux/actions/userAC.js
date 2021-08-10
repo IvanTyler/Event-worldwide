@@ -86,8 +86,20 @@ export const logout = (clearUser) => async (dispatch) => {
     console.log('server status --->>>', status)
 }
 
-// export const userImg = (nameImg) => async (dispatch) => {
-//     const response await fetch('')
-// }
+export const userImg = (nameImg, files) => async (dispatch) => {
+    console.log('name img -->', nameImg)
+    const response = await fetch('http://localhost:3001/uploadImg', {
+        method: 'POST',
+        // headers: {
+        //     'Content-Type': 'multipart/form-data',
+        // },
+        // credentials: 'include',
+        body: nameImg,
+        files: files
+    })
 
-export default { addUser, getFormUserData, logout };
+    const data = await response.json();
+    console.log('server', data);
+}
+
+export default { addUser, getFormUserData, logout, userImg };

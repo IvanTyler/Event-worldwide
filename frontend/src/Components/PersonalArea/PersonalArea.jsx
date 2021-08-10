@@ -3,17 +3,17 @@ import styleContainer from '../Container/container.module.css'
 import CountryItem from '../CountryItem/CountryItem'
 import { useDispatch } from 'react-redux';
 import { saveUserDataPersonalArea } from '../../redux/actions/userAC'
-import ImageUploading from 'react-images-uploading';
-import axios from 'axios'
-
-
+import { userImg } from '../../redux/actions/userAC';
 import { useRef, useState } from 'react'
 
-// const ImageThumb = ({ image }) => {
-//     return <img src={URL.createObjectURL(image)} alt={image.name} />;
+
+
+// const ImageThumb = ({ image, avatarUser }) => {
+//     return <img ref={avatarUser} className={style.userAvatar} src={URL.createObjectURL(image)} alt={image.name} />;
 // };
 
 function PersonalArea() {
+
     let countryList = [
         {
             id: 1,
@@ -133,29 +133,45 @@ function PersonalArea() {
         }
     }
 
-    const [imgUpload, setImgUpload] = useState()
+    const [imgUpload, setImgUpload] = useState(null)
 
     const fileSelectedHandler = (event) => {
-        setImgUpload(event.target.files[0].name)
+        setImgUpload(event.target.files[0])
     }
-    console.log(imgUpload)
-    
+
+    // const avatarUser = useRef(null)
+
+    const downloadAvatarUser = (e) => {
+        e.preventDefault();
+        // console.log(imgUpload);
+        // const formData = Object.fromEntries(e.target);
+        const files = e.target.imgUpload.files[0];
+        const hello = new FormData()
+        hello.append('files', e.target.imgUpload.files[0])
+        console.log(e.target.imgUpload.files[0])
+        console.log('formData ++++++++++++++++++++', hello)
+        dispatch(userImg(hello, files))
+    }
+
+
     return (
         <>
             <section className={style.sectionPersonalArea}>
                 <div className={styleContainer.container + ' ' + style.containerPersonalData}>
 
                     <div className={style.personalData_avatar}>
-                        <div className={style.personalData_imgBg}>
-                            <img src="" alt="" />
-                            <div className={style.personalDat_updateImg}>
-                                <div className={style.fon}></div>
-                                <div class={style.updateImg}>
-                                    <input onChange={fileSelectedHandler} class={style.personalDat_FileInput} type="file" accept="image/jpeg,image/png,image/gif" />
+                        <form onSubmit={downloadAvatarUser} action="" enctype='multipart/form-data'>
+                            <div className={style.personalData_imgBg}>
+                                {/* {imgUpload && <ImageThumb  className={style.personalData_imgContent} image={imgUpload} avatarUser={avatarUser} />} */}
+                                <div className={style.personalDat_updateImg}>
+                                    <div className={style.fon}></div>
+                                    <div class={style.updateImg}>
+                                        <input onChange={fileSelectedHandler} class={style.personalDat_FileInput} name="imgUpload" type="file" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <button>Загрузить img</button>
+                            <button>Загрузить img</button>
+                        </form>
                         <div className={style.personalData_name}>Ivan</div>
                     </div>
 

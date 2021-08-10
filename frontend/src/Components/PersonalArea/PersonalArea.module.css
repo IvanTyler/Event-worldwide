@@ -222,3 +222,7 @@
 .blockPersonalDataEdit:hover {
     background-color: #ffaa55;
 }
+
+.userAvatar {
+    position: absolute;
+}
