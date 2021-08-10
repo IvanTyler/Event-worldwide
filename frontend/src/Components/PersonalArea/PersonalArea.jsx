@@ -1,7 +1,7 @@
 import style from './PersonalArea.module.css'
 import styleContainer from '../Container/container.module.css'
 import CountryItem from '../CountryItem/CountryItem'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { saveUserDataPersonalArea } from '../../redux/actions/userAC'
 import { userImg } from '../../redux/actions/userAC';
 import { useRef, useState } from 'react'
@@ -13,6 +13,9 @@ import { useRef, useState } from 'react'
 // };
 
 function PersonalArea() {
+
+    const avatar = useSelector((state) => state.user.avatar);
+    console.log(avatar)
 
     let countryList = [
         {
@@ -163,6 +166,7 @@ function PersonalArea() {
                         <form onSubmit={downloadAvatarUser} action="" enctype='multipart/form-data'>
                             <div className={style.personalData_imgBg}>
                                 {/* {imgUpload && <ImageThumb  className={style.personalData_imgContent} image={imgUpload} avatarUser={avatarUser} />} */}
+                                <img src={avatar} alt="" />
                                 <div className={style.personalDat_updateImg}>
                                     <div className={style.fon}></div>
                                     <div class={style.updateImg}>

@@ -1,4 +1,4 @@
-import { ADD_USER, ADD_ID, DELETE_USER, DELETE_ID_USER } from '../types/userTypes';
+import { ADD_USER, ADD_ID, DELETE_USER, DELETE_ID_USER, ADD_USER_AVATAR } from '../types/userTypes';
 
 export const addUser = (user) => {
     return {
@@ -25,6 +25,13 @@ export const deleteIdUser = (clearIdUser) => {
     return {
         type: DELETE_ID_USER,
         payload: clearIdUser,
+    };
+};
+
+export const addUserAvatar = (avatar) => {
+    return {
+        type: ADD_USER_AVATAR,
+        payload: avatar,
     };
 };
 
@@ -88,7 +95,7 @@ export const logout = (clearUser) => async (dispatch) => {
 
 export const userImg = (nameImg, files) => async (dispatch) => {
     console.log('name img -->', nameImg)
-    const response = await fetch('http://localhost:3001/uploadImg', {
+    const response = await fetch('https://ikiro.ru/api/uploadImg', {
         method: 'POST',
         // headers: {
         //     'Content-Type': 'multipart/form-data',
@@ -100,6 +107,7 @@ export const userImg = (nameImg, files) => async (dispatch) => {
 
     const data = await response.json();
     console.log('server', data);
+    dispatch(addUserAvatar(data.avatar))
 }
 
 export default { addUser, getFormUserData, logout, userImg };
