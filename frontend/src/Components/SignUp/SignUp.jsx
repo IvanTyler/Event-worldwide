@@ -38,7 +38,7 @@ function SignUp() {
     const submitHandler = (event) => {
         event.preventDefault()
         const city = selectCity.current.value
-        dispatch(getFormUserData(inputUser, inputEmail, inputPassword, city, inputPhone))
+        dispatch(getFormUserData(inputUser, inputPassword, inputEmail, city, inputPhone))
         setInputUser('')
         setInputEmail('')
         setInputPassword('')

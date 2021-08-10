@@ -1,22 +1,15 @@
 import style from './PersonalArea.module.css'
 import styleContainer from '../Container/container.module.css'
 import CountryItem from '../CountryItem/CountryItem'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { saveUserDataPersonalArea } from '../../redux/actions/userAC'
-import { userImg } from '../../redux/actions/userAC';
+import ImageUploading from 'react-images-uploading';
+import axios from 'axios'
+import PersonalAreaEventlist from '../PersonalAreaEventlist/PersonalAreaEventlist'
 import { useRef, useState } from 'react'
 
 
-
-// const ImageThumb = ({ image, avatarUser }) => {
-//     return <img ref={avatarUser} className={style.userAvatar} src={URL.createObjectURL(image)} alt={image.name} />;
-// };
-
 function PersonalArea() {
-
-    const avatar = useSelector((state) => state.user.avatar);
-    console.log(avatar)
-
     let countryList = [
         {
             id: 1,
@@ -124,7 +117,7 @@ function PersonalArea() {
     const showPasswordUser = useRef(null)
 
     const showPassword = () => {
-
+        
         if (showHidePassword === false) {
             editPasswordUser.current.type = 'text';
             showPasswordUser.current.classList.add(style.showPassword)
@@ -136,26 +129,16 @@ function PersonalArea() {
         }
     }
 
-    const [imgUpload, setImgUpload] = useState(null)
+    const [imgUpload, setImgUpload] = useState()
 
     const fileSelectedHandler = (event) => {
+        console.log(event.target.files[0])
         setImgUpload(event.target.files[0])
     }
 
-    // const avatarUser = useRef(null)
-
-    const downloadAvatarUser = (e) => {
-        e.preventDefault();
-        // console.log(imgUpload);
-        // const formData = Object.fromEntries(e.target);
-        const files = e.target.imgUpload.files[0];
-        const hello = new FormData()
-        hello.append('files', e.target.imgUpload.files[0])
-        console.log(e.target.imgUpload.files[0])
-        console.log('formData ++++++++++++++++++++', hello)
-        dispatch(userImg(hello, files))
+    const fileUploadHandler = () => {
+        axios.post()
     }
-
 
     return (
         <>
@@ -163,19 +146,16 @@ function PersonalArea() {
                 <div className={styleContainer.container + ' ' + style.containerPersonalData}>
 
                     <div className={style.personalData_avatar}>
-                        <form onSubmit={downloadAvatarUser} action="" enctype='multipart/form-data'>
-                            <div className={style.personalData_imgBg}>
-                                {/* {imgUpload && <ImageThumb  className={style.personalData_imgContent} image={imgUpload} avatarUser={avatarUser} />} */}
-                                <img src={avatar} alt="" />
-                                <div className={style.personalDat_updateImg}>
-                                    <div className={style.fon}></div>
-                                    <div class={style.updateImg}>
-                                        <input onChange={fileSelectedHandler} class={style.personalDat_FileInput} name="imgUpload" type="file" />
-                                    </div>
+                        <div className={style.personalData_imgBg}>
+                            <img className={style.personalData_imgContent} src="" alt="personal avatar" />
+                            <div className={style.personalDat_updateImg}>
+                                <div className={style.fon}></div>
+                                <div class={style.updateImg}>
+                                    <input onChange={fileSelectedHandler} class={style.personalDat_FileInput} type="file" accept="image/jpeg,image/png,image/gif" />
                                 </div>
                             </div>
-                            <button>Загрузить img</button>
-                        </form>
+                        </div>
+                                    <button>Загрузить img</button>
                         <div className={style.personalData_name}>Ivan</div>
                     </div>
 
@@ -229,9 +209,9 @@ function PersonalArea() {
                         {buttonUpdate && <button onClick={() => saveUserData()} className={style.blockPersonalDataSubmit} type="submit">Обновить</button>}
                         <span onClick={() => editUserData()} className={style.blockPersonalDataSubmit + ' ' + style.blockPersonalDataEdit}>Редактировать</span>
                     </form>
-
                 </div>
             </section>
+                    <PersonalAreaEventlist/>
         </>
     )
 }

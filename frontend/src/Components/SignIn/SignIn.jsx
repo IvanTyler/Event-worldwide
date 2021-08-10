@@ -5,11 +5,9 @@ import styleContainer from '../Container/container.module.css'
 import { useState } from 'react'
 import { getFormUserDataAuth } from '../../redux/actions/userAC';
 import { useDispatch } from 'react-redux';
-import { useHistory } from "react-router-dom";
 
 function SignIn() {
     const dispatch = useDispatch()
-    const history = useHistory();
 
     const [inputEmail, setInputEmail] = useState('')
     const [inputPassword, setInputPassword] = useState('')
@@ -22,14 +20,9 @@ function SignIn() {
         setInputPassword(event.target.value)
     }
 
-    const HomeButton = () => {
-        history.push("/");
-    }
-
     const submitHandler = (event) => {
         event.preventDefault()
         dispatch(getFormUserDataAuth(inputEmail, inputPassword))
-        HomeButton()
     }
 
     return (

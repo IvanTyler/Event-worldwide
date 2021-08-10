@@ -4,23 +4,15 @@ import styleContainer from '../Container/container.module.css';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../redux/actions/userAC';
-import { useHistory } from "react-router-dom";
 
 
 function Header() {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user.id);
-    const history = useHistory();
-
     console.log(user);
 
     const logoutSession = () => {
         dispatch(logout(''))
-        HomeButton()
-    }
-
-    const HomeButton = () => {
-        history.push("/");
     }
 
     return (
@@ -33,6 +25,21 @@ function Header() {
                                 <Link className={style.headerMenuLink} to="/">
                                     Главная
                                 </Link>
+
+
+                                
+                                <Link className={style.headerMenuLink} to="/search">
+                                            Поиск событий
+                                        </Link>
+                                        <Link className={style.headerMenuLink} to="/quicksearch">
+                                            Быстрый поиск
+                                        </Link>
+                                        <Link className={style.headerMenuLink} to="/personalArea">
+                                            Личный кабинет
+                                        </Link>
+
+
+
                                 {user ? (
                                     <>
                                         <Link className={style.headerMenuLink} to="/search">
@@ -52,7 +59,7 @@ function Header() {
                                         <Link className={style.headerMenuLink} to="/personalArea">
                                             Личный кабинет
                                         </Link>
-                                        <Link onClick={() => logoutSession()} className={style.headerMenuLink}>
+                                        <Link onClick={() => logoutSession()} className={style.headerMenuLink} to="/logout">
                                             Выйти
                                         </Link>
                                     </>

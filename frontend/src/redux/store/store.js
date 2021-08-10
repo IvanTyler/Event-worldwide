@@ -7,13 +7,15 @@ import subscribeReducer from "../reducers/subscribesReducer";
 import posterReducer from "../reducers/posterReducer";
 import eventquickReducer from "../reducers/eventquickReducers";
 import eventfullReducer from "../reducers/eventfullReducers";
+import favouriteReducer from "../reducers/favouriteReducer";
 
 const rootReducer = combineReducers({
     user: userReducer,
     poster: posterReducer,
     subscribe: subscribeReducer,
     eventquick: eventquickReducer,
-    eventfull : eventfullReducer
+    eventfull : eventfullReducer,
+    favourite: favouriteReducer,
 })
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
