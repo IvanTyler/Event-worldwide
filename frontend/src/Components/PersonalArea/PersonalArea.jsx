@@ -117,7 +117,7 @@ function PersonalArea() {
     const showPasswordUser = useRef(null)
 
     const showPassword = () => {
-        
+
         if (showHidePassword === false) {
             editPasswordUser.current.type = 'text';
             showPasswordUser.current.classList.add(style.showPassword)
@@ -155,7 +155,7 @@ function PersonalArea() {
                                 </div>
                             </div>
                         </div>
-                                    <button>Загрузить img</button>
+                        <button>Загрузить img</button>
                         <div className={style.personalData_name}>Ivan</div>
                     </div>
 
@@ -211,7 +211,7 @@ function PersonalArea() {
                     </form>
                 </div>
             </section>
-                    <PersonalAreaEventlist/>
+            <PersonalAreaEventlist />
         </>
     )
 }
