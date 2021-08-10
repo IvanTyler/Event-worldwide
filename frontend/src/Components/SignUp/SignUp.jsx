@@ -3,7 +3,6 @@ import { useState, useRef } from 'react'
 import { useDispatch } from 'react-redux';
 import styleContainer from '../Container/container.module.css'
 import { useHistory } from "react-router-dom";
-
 import { getFormUserData } from '../../redux/actions/userAC';
 
 function SignUp() {
