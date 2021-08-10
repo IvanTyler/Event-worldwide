@@ -12,7 +12,7 @@ import {
   Switch,
 } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { getEventsByParams, setAllByParams } from '../../redux/actions/eventAC';
+import { getEventsByParams, setAllByParams } from '../../redux/actions/eventfull';
 
 function SearchForm() {
   const [componentSize, setComponentSize] = useState('large');
