@@ -10,10 +10,6 @@ function QuickSearchEventList() {
   console.log(eventList[0]);
   
 
-
-
-
-
   return (
     
     <>
@@ -31,5 +27,4 @@ function QuickSearchEventList() {
 }
 
 export default QuickSearchEventList;
-
 

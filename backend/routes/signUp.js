@@ -18,11 +18,12 @@ router
       console.log(password);
         console.log(pass);
         const createUser = await User.create({email, password: pass, Name: userName, City: city, Userphonenumber: phone}, {returning: true, plain: true});
+        console.log(createUser);
         req.session.user = {
           id: createUser.id,
-          name: createUser.name,
+          name: createUser.Name,
         };
-       
+       console.log('------>', req.session.user.id);
 
 
 

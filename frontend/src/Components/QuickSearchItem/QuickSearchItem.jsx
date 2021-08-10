@@ -24,10 +24,9 @@ function QuickSearchItem({ avatar, title, description, url, key, id }) {
   }
 
 const dispatch = useDispatch()
-const user = useSelector(state => state.user.id)
- console.log(user)
 
-  const addSubscribe = (user) => {
+
+  const addSubscribe = () => {
     dispatch(addOneSubscribe(showEventData()))
   }
 
@@ -45,7 +44,7 @@ const user = useSelector(state => state.user.id)
       />
 
       {/* <Button on type="primary" shape="circle">+</Button> */}
-      <Button onClick={() => addSubscribe(user)} on type="primary" shape="circle">+</Button>
+      <Button onClick={addSubscribe} on type="primary" shape="circle">+</Button>
 
     </List.Item>
     :

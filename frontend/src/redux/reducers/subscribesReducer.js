@@ -1,6 +1,6 @@
 import { GET_SUBCRIBE, ADD_SUBSCRIBE, DELETE_SUBSCRIBE, CHANGE_STATUS } from "../types/subscribesTypes";
 
-function todoReducer(state = [], action) {
+function subscribeReducer(state = [], action) {
 
   switch (action.type) {
     case GET_SUBCRIBE:
@@ -28,4 +28,4 @@ function todoReducer(state = [], action) {
   }
 }
 
-export default todoReducer;
+export default subscribeReducer;
