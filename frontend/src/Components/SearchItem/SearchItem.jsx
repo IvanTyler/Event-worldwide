@@ -5,7 +5,7 @@ import { addOneSubscribe } from '../../redux/actions/subscribeAC';
 
 
 
-function QuickSearchItem({ avatar, title, description, url, key, id }) {
+function SearchItem({ avatar, title, description, url, key, id }) {
 
   const dispatch = useDispatch()
 
@@ -42,5 +42,5 @@ function QuickSearchItem({ avatar, title, description, url, key, id }) {
 }
 
 
-export default QuickSearchItem;
+export default SearchItem;
 
