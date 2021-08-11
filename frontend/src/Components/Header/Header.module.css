@@ -5,6 +5,10 @@
     padding: 10px 0;
 }
 
+.header {
+    margin-bottom: -70px;
+}
+
 .headerSignUp {
     background-color: #002e66;
     border-bottom: 5px solid rgba(14, 175, 170);

@@ -2,9 +2,11 @@ import style from './Header.module.css';
 import styleContainer from '../Container/container.module.css';
 import logo from './img/eww.png'
 
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../redux/actions/userAC';
+import { useEffect, useState } from 'react';
 
 
 function Header() {
@@ -15,10 +17,15 @@ function Header() {
     const logoutSession = () => {
         dispatch(logout(''))
     }
+    
+    const location = useLocation();
+    useEffect(() => {
+        
+    }, [location]);
 
     return (
         <>
-            <header className={window.location.href === 'http://localhost:3000/signUp' ? style.headerSignUp : style.header}>
+            <header className={window.location.href === 'http://localhost:3000/signUp' || window.location.href === 'http://localhost:3000/signIn' ? style.headerSignUp : style.header}>
                 <div className={`${styleContainer.container} ${style.containerHeader}`}>
                     <nav className={style.navHeader}>
                         <ul className={style.headerMenu}>
