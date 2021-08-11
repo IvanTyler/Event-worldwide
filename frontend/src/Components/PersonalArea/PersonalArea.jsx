@@ -3,7 +3,6 @@ import styleContainer from '../Container/container.module.css'
 import CountryItem from '../CountryItem/CountryItem'
 import { useDispatch } from 'react-redux';
 import { saveUserDataPersonalArea } from '../../redux/actions/userAC'
-import ImageUploading from 'react-images-uploading';
 import axios from 'axios'
 import PersonalAreaEventlist from '../PersonalAreaEventlist/PersonalAreaEventlist'
 import { useRef, useState } from 'react'
