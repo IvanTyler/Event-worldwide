@@ -138,14 +138,14 @@ function PersonalArea() {
   };
 
   const downloadAvatarUser = (e) => {
-      e.preventDefault();
-      const files = e.target.imgUpload.files[0];
-      const hello = new FormData()
-      hello.append('files', e.target.imgUpload.files[0])
-      console.log(e.target.imgUpload.files[0])
-      console.log('formData ++++++++++++++++++++', hello)
-      console.log(files)
-      dispatch(userImg(hello, files))
+    e.preventDefault();
+    const files = e.target.imgUpload.files[0];
+    const hello = new FormData()
+    hello.append('files', e.target.imgUpload.files[0])
+    console.log(e.target.imgUpload.files[0])
+    console.log('formData ++++++++++++++++++++', hello)
+    console.log(files)
+    dispatch(userImg(hello, files))
   }
 
 
@@ -153,120 +153,124 @@ function PersonalArea() {
     <>
       <section className={style.sectionPersonalArea}>
         <div className={styleContainer.container + ' ' + style.containerPersonalData}>
-          <div className={style.personalData_avatar}>
-            <form onSubmit={downloadAvatarUser} action="" enctype="multipart/form-data">
-              <div className={style.personalData_imgBg}>
-                {/* {imgUpload && <ImageThumb  className={style.personalData_imgContent} image={imgUpload} avatarUser={avatarUser} />} */}
-                <img src={avatar} alt="" />
-                <div className={style.personalDat_updateImg}>
-                  <div className={style.fon}></div>
-                  <div class={style.updateImg}>
-                    <input onChange={fileSelectedHandler} class={style.personalDat_FileInput} name="imgUpload" type="file" />
-                  </div>
-                </div>
-              </div>
-              <button>Загрузить img</button>
-            </form>
-            <div className={style.personalData_name}>Ivan</div>
-          </div>
 
-          <form onSubmit={submitHandler} className={style.formPersonalData_generalInformation} action="">
-            <div className={style.personalDataItem + ' ' + style.blockPersonalData_country}>
-              <label className={style.formPersonalData_labelCountry + ' ' + style.labelFormPersonalData} htmlFor="country">
-                <span className={style.formPersonalDataText}>Country</span>
-              </label>
-              <div className={style.wrapperSelectCountry}>
-                <div
-                  ref={divSelectCountry}
-                  onClick={() => showBlockCountryes()}
-                  className={style.blockPersonalDataText + ' ' + style.sity}
-                  id="country"
-                >
-                  Москва
-                </div>
-                {countrySelectItems && (
-                  <div className={style.CountrySelect}>
-                    {countryList.map((item) => (
-                      <CountryItem
-                        key={item.id}
-                        id={item.id}
-                        sity={item.sity}
-                        divSelectCountry={divSelectCountry}
-                        setCountrySelectCurrent={setCountrySelectCurrent}
-                      />
-                    ))}
+          <h2 className={style.personalAreaTitle}>Personal area</h2>
+          <div className={style.personalAreaContent}>
+            <div className={style.personalData_avatar}>
+              <form onSubmit={downloadAvatarUser} action="" enctype="multipart/form-data">
+                <div className={style.personalData_imgBg}>
+                  {/* {imgUpload && <ImageThumb  className={style.personalData_imgContent} image={imgUpload} avatarUser={avatarUser} />} */}
+                  <img src={avatar} alt="" />
+                  <div className={style.personalDat_updateImg}>
+                    <div className={style.fon}></div>
+                    <div class={style.updateImg}>
+                      <input onChange={fileSelectedHandler} class={style.personalDat_FileInput} name="imgUpload" type="file" />
+                    </div>
                   </div>
-                )}
+                </div>
+                <div className={style.personalData_name}>Ivan</div>
+                <button className={style.submitImg}>Загрузить img</button>
+              </form>
+            </div>
+
+            <form onSubmit={submitHandler} className={style.formPersonalData_generalInformation} action="">
+              <div className={style.personalDataItem + ' ' + style.blockPersonalData_country}>
+                <label className={style.formPersonalData_labelCountry + ' ' + style.labelFormPersonalData} htmlFor="country">
+                  <span className={style.formPersonalDataText}>Country</span>
+                </label>
+                <div className={style.wrapperSelectCountry}>
+                  <div
+                    ref={divSelectCountry}
+                    onClick={() => showBlockCountryes()}
+                    className={style.blockPersonalDataText + ' ' + style.sity}
+                    id="country"
+                  >
+                    Москва
+                  </div>
+                  {countrySelectItems && (
+                    <div className={style.CountrySelect}>
+                      {countryList.map((item) => (
+                        <CountryItem
+                          key={item.id}
+                          id={item.id}
+                          sity={item.sity}
+                          divSelectCountry={divSelectCountry}
+                          setCountrySelectCurrent={setCountrySelectCurrent}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-            <div className={style.personalDataItem + ' ' + style.wrapperPersonalData_firsName}>
-              <label className={style.formPersonalData_labelFirsName + ' ' + style.labelFormPersonalData} htmlFor="firstName">
-                <span className={style.formPersonalDataText}>First Name</span>
-              </label>
-              <input
-                ref={editNameUser}
-                className={style.blockPersonalDataText}
-                type="text"
-                name="name"
-                readOnly="readonly"
-                onChange={(event) => setEditName(event.target.value)}
-                value={editName}
-              />
-            </div>
-            <div className={style.personalDataItem + ' ' + style.wrapperPersonalData_email}>
-              <label className={style.formPersonalData_labelEmail + ' ' + style.labelFormPersonalData} htmlFor="email">
-                <span className={style.formPersonalDataText}>Email</span>
-              </label>
-              <input
-                ref={editEmailUser}
-                className={style.blockPersonalDataText}
-                type="email"
-                name="email"
-                readOnly="readonly"
-                onChange={(event) => setEditEmail(event.target.value)}
-                value={editEmail}
-              />
-            </div>
-            <div className={style.personalDataItem + ' ' + style.wrapperPersonalData_password}>
-              <label className={style.formPersonalData_labelEmail + ' ' + style.labelFormPersonalData} htmlFor="email">
-                <span className={style.formPersonalDataText}>Password</span>
-              </label>
-              <div className={style.wrapperPassword}>
-                <span ref={showPasswordUser} onClick={() => showPassword()} className={style.hidePassword}></span>
+              <div className={style.personalDataItem + ' ' + style.wrapperPersonalData_firsName}>
+                <label className={style.formPersonalData_labelFirsName + ' ' + style.labelFormPersonalData} htmlFor="firstName">
+                  <span className={style.formPersonalDataText}>First Name</span>
+                </label>
                 <input
-                  ref={editPasswordUser}
+                  ref={editNameUser}
                   className={style.blockPersonalDataText}
-                  type="password"
-                  name="password"
+                  type="text"
+                  name="name"
                   readOnly="readonly"
-                  onChange={(event) => setEditPassword(event.target.value)}
-                  value={editPassword}
+                  onChange={(event) => setEditName(event.target.value)}
+                  value={editName}
                 />
               </div>
-            </div>
-            <div className={style.personalDataItem + ' ' + style.wrapperPersonalData_phone}>
-              <label className={style.formPersonalData_labelphone + ' ' + style.labelFormPersonalData} htmlFor="phone">
-                <span className={style.formPersonalDataText}>Phone</span>
-              </label>
-              <input
-                ref={editPhoneUser}
-                className={style.blockPersonalDataText}
-                type="tel"
-                name="phone"
-                readOnly="readonly"
-                onChange={(event) => setEditPhone(event.target.value)}
-                value={editPhone}
-              />
-            </div>
-            {buttonUpdate && (
-              <button onClick={() => saveUserData()} className={style.blockPersonalDataSubmit} type="submit">
-                Обновить
-              </button>
-            )}
-            <span onClick={() => editUserData()} className={style.blockPersonalDataSubmit + ' ' + style.blockPersonalDataEdit}>
-              Редактировать
-            </span>
-          </form>
+              <div className={style.personalDataItem + ' ' + style.wrapperPersonalData_email}>
+                <label className={style.formPersonalData_labelEmail + ' ' + style.labelFormPersonalData} htmlFor="email">
+                  <span className={style.formPersonalDataText}>Email</span>
+                </label>
+                <input
+                  ref={editEmailUser}
+                  className={style.blockPersonalDataText}
+                  type="email"
+                  name="email"
+                  readOnly="readonly"
+                  onChange={(event) => setEditEmail(event.target.value)}
+                  value={editEmail}
+                />
+              </div>
+              <div className={style.personalDataItem + ' ' + style.wrapperPersonalData_password}>
+                <label className={style.formPersonalData_labelEmail + ' ' + style.labelFormPersonalData} htmlFor="email">
+                  <span className={style.formPersonalDataText}>Password</span>
+                </label>
+                <div className={style.wrapperPassword}>
+                  <span ref={showPasswordUser} onClick={() => showPassword()} className={style.hidePassword}></span>
+                  <input
+                    ref={editPasswordUser}
+                    className={style.blockPersonalDataText}
+                    type="password"
+                    name="password"
+                    readOnly="readonly"
+                    onChange={(event) => setEditPassword(event.target.value)}
+                    value={editPassword}
+                  />
+                </div>
+              </div>
+              <div className={style.personalDataItem + ' ' + style.wrapperPersonalData_phone}>
+                <label className={style.formPersonalData_labelphone + ' ' + style.labelFormPersonalData} htmlFor="phone">
+                  <span className={style.formPersonalDataText}>Phone</span>
+                </label>
+                <input
+                  ref={editPhoneUser}
+                  className={style.blockPersonalDataText}
+                  type="tel"
+                  name="phone"
+                  readOnly="readonly"
+                  onChange={(event) => setEditPhone(event.target.value)}
+                  value={editPhone}
+                />
+              </div>
+              {buttonUpdate && (
+                <button onClick={() => saveUserData()} className={style.blockPersonalDataSubmit} type="submit">
+                  Обновить
+                </button>
+              )}
+              <span onClick={() => editUserData()} className={style.blockPersonalDataSubmit + ' ' + style.blockPersonalDataEdit}>
+                Редактировать
+              </span>
+            </form>
+          </div>
         </div>
       </section>
     </>

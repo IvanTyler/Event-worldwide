@@ -4,14 +4,20 @@
 
 .containerPersonalData {
     display: flex;
-    justify-content: space-between;
-    max-width: 1000px;
+    flex-direction: column;
+    max-width: 750px;
     background: #fff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 20px;
+    padding: 0;
 }
 
 .personalData_avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.personalData_avatar form{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,8 +30,6 @@
 }
 
 .formPersonalData_generalInformation {
-    background-color: rgba(0, 118, 255, 0.1);
-    padding: 15px;
     border-radius: 5px;
 }
 
@@ -71,6 +75,7 @@
     position: relative;
     width: 200px;
     height: 200px;
+    border: 2px solid #ccc;
     background-image: url('https://www.gravatar.com/avatar/1336aff9fea5221a52cbae53e5eb061c?size=200&d=https%3A%2F%2Fsalesforce-developer.ru%2Fwp-content%2Fuploads%2Favatars%2Fno-avatar.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -116,7 +121,7 @@
     font-size: 17px;
     line-height: 14px;
     font-weight: 700;
-    color: #737373;
+    color: #000;
 }
 
 .personalDataItem {
@@ -134,8 +139,8 @@
 
 .hidePassword {
     position: absolute;
-    right: 8px;
-    top: 14px;
+    right: 15px;
+    top: 19px;
     display: inline-block;
     height: 20px;
     width: 20px;
@@ -151,11 +156,12 @@
 
 .blockPersonalDataText {
     width: 100%;
-    border: solid 1px #444;
+    height: 40px;
+    border: 1px solid #ccc;
     font-size: 17px;
     line-height: 20px;
     margin-top: 8px;
-    padding: 5px 8px;
+    padding: 10px 15px;
     outline: none;
 }
 
@@ -166,16 +172,23 @@
 
 .blockPersonalDataText.sity {
     position: relative;
-    width: 450px;
-    max-width: 100%;
     background-color: #fff;
     cursor: pointer;
 }
 
 .blockPersonalDataText.sity::after {
-    content: '▼';
+    content: '🠻';
     position: absolute;
-    right: 5px;
+    top: 0;
+    right: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 30px;
+    background-color: #002e66;
+    color: #0eafaa;
+    font-size: 33px;
 }
 
 .CountrySelect {
@@ -190,7 +203,7 @@
     position: relative;
 }
 
-.blockPersonalDataSubmit {
+.blockPersonalDataSubmit, .submitImg {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -210,15 +223,34 @@
     cursor: pointer;
 }
 
+.submitImg {
+    margin-right: 0;
+}
+
 .blockPersonalDataSubmit:hover {
     background-color: #1e95f1;
 }
 
-.blockPersonalDataEdit {
-    background-color: #f7d952;
-    color: #141414;
+.blockPersonalDataEdit, .submitImg {
+    background-color: #0eafaa;
+    color: #fff;
 }
 
-.blockPersonalDataEdit:hover {
+/* .blockPersonalDataEdit:hover {
     background-color: #ffaa55;
+} */
+
+.personalAreaTitle {
+    text-align: center;
+    background-color: #002e66;
+    padding: 15px 25px;
+    border-bottom: 5px solid #0eafaa;
+    color: #fff;
+    font-size: 30px;
+}
+
+.personalAreaContent {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }

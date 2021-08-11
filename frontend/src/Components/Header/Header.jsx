@@ -25,7 +25,12 @@ function Header() {
 
   return (
     <>
-      <header className={window.location.href === 'http://localhost:3000/signUp' || window.location.href === 'http://localhost:3000/signIn' ? style.headerSignUp : style.header}>
+      <header className={
+        window.location.href === 'http://localhost:3000/signUp' ||
+          window.location.href === 'http://localhost:3000/signIn' ||
+          window.location.href === 'http://localhost:3000/personalArea' ?
+          style.headerRest : style.header
+      }>
         <div className={`${styleContainer.container} ${style.containerHeader}`}>
           <nav className={style.navHeader}>
             <ul className={style.headerMenu}>

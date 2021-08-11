@@ -1,4 +1,4 @@
-.header, .headerSignUp {
+.header, .headerRest {
     border-bottom: solid 1px #fff;
     position: relative;
     width: 100%;
@@ -9,7 +9,7 @@
     margin-bottom: -70px;
 }
 
-.headerSignUp {
+.headerRest{
     background-color: #002e66;
     border-bottom: 5px solid rgba(14, 175, 170);
 }
