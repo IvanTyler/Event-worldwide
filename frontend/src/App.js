@@ -2,7 +2,6 @@ import './App.css';
 import Header from './Components/Header/Header';
 import SignUp from './Components/SignUp/SignUp';
 import SignIn from './Components/SignIn/SignIn';
-import PosterList from './Components/PosterList/PosterList';
 import SearchForm from './Components/SearchForm/SearchForm';
 import PersonalArea from './Components/PersonalArea/PersonalArea';
 import QuickSearchContainer from './Components/QuickSearchContainer/QuickSearchContainer';
@@ -33,12 +32,11 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <main>
+        <main className={window.location.href === 'http://localhost:3000/signUp' ? 'mainSignUp' : 'main'}>
             <Switch>
 
               <Route exact path="/">
                 <DescriptionProject />
-                <PosterList />
               </Route>
               
               <Route exact path="/signUp">

@@ -27,12 +27,17 @@ function SignIn() {
 
     return (
         <>
-            <div className={styleContainer.container}>
-                <form className={SignUp.Headerform} onSubmit={submitHandler} action="">
-                    <input required onChange={inputHandlerEmail} maxLength="15" className={SignUp.inputHeaderForm} type="email" name="email" placeholder="Введите email" />
-                    <input required onChange={inputHandlerPassword} maxLength="15" className={SignUp.inputHeaderForm} type="password" name="password" placeholder="Password" />
-                    <button className={SignUp.HeaderFormButton} type="submit">Войти</button>
-                </form>
+            <div className={styleContainer.container + ' ' + SignUp.containerSignUp}>
+                <div className={SignUp.wrapperEntranceUser}>
+                    <div className={SignUp.HeaderformTop}>
+                        Authorization
+                    </div>
+                    <form className={SignUp.Headerform} onSubmit={submitHandler} action="">
+                        <input required onChange={inputHandlerEmail} maxLength="15" className={SignUp.inputHeaderForm} type="email" name="email" placeholder="Введите email" />
+                        <input required onChange={inputHandlerPassword} maxLength="15" className={SignUp.inputHeaderForm} type="password" name="password" placeholder="Password" />
+                        <button className={SignUp.HeaderFormButton} type="submit">Войти</button>
+                    </form>
+                </div>
             </div>
         </>
     )

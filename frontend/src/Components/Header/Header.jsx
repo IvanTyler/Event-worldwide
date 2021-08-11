@@ -1,5 +1,6 @@
 import style from './Header.module.css';
 import styleContainer from '../Container/container.module.css';
+import logo from './img/eww.png'
 
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -17,28 +18,17 @@ function Header() {
 
     return (
         <>
-            <header className={style.header}>
+            <header className={window.location.href === 'http://localhost:3000/signUp' ? style.headerSignUp : style.header}>
                 <div className={`${styleContainer.container} ${style.containerHeader}`}>
                     <nav className={style.navHeader}>
                         <ul className={style.headerMenu}>
                             <li className={style.headerMenuItem}>
                                 <Link className={style.headerMenuLink} to="/">
-                                    Главная
+                                    <div className={style.wrapperHeaderLogo}>
+                                        <img className={style.headerLogo} src={logo} alt="" />
+                                    </div>
+                                    <span className={style.logoText}>event world wide</span>
                                 </Link>
-
-
-                                
-                                <Link className={style.headerMenuLink} to="/search">
-                                            Поиск событий
-                                        </Link>
-                                        <Link className={style.headerMenuLink} to="/quicksearch">
-                                            Быстрый поиск
-                                        </Link>
-                                        <Link className={style.headerMenuLink} to="/personalArea">
-                                            Личный кабинет
-                                        </Link>
-
-
 
                                 {user ? (
                                     <>
@@ -53,7 +43,7 @@ function Header() {
                                     console.log(123)
                                 )}
                             </li>
-                            <li>
+                            <li className={style.headerMenuItem}>
                                 {user ? (
                                     <>
                                         <Link className={style.headerMenuLink} to="/personalArea">
@@ -66,10 +56,10 @@ function Header() {
                                 ) : (
                                     <>
                                         <Link className={style.headerMenuLink} to="/signUp">
-                                            Регистрация
+                                            SignUp
                                         </Link>
                                         <Link className={style.headerMenuLink} to="/signIn">
-                                            Авторизация
+                                            SignIn
                                         </Link>
                                     </>
                                 )}
