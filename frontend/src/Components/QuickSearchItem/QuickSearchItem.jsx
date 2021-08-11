@@ -15,7 +15,7 @@ function QuickSearchItem({ location, avatar, title, description, url, key, id })
       Url: obj.url,
       Name: obj.title.props.children,
       Startdatetime: obj.description,
-     location: obj.location
+      location: obj.location
     }
     console.log(data);
     dispatch(addOneSubscribe(data))
@@ -31,8 +31,6 @@ function QuickSearchItem({ location, avatar, title, description, url, key, id })
             avatar={<Avatar src={avatar} />}
             title={<a href={url}>{title}</a>}
             description={description}
-            // lat={lat}
-            // lon={lon}
           />
 
           <Button onClick={() => addSubscribe({ avatar, url, title, description, location })} on type="primary" shape="circle">+</Button>

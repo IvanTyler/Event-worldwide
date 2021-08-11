@@ -7,6 +7,7 @@ const initState = {
   eventsqiuck: [],
   eventsfull: [],
   favourite: [],
+  coordinates: [],
 }
 
 

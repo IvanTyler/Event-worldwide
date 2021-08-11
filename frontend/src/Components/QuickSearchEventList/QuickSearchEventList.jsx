@@ -1,7 +1,7 @@
 import { List, Avatar } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import QuickSearchItem from '../QuickSearchItem/QuickSearchItem'
-// function QuickEventList () {
+
 
 function QuickSearchEventList() {
   const eventList = useSelector(state => state.eventquick);
@@ -18,9 +18,6 @@ function QuickSearchEventList() {
         description={event.datetime_local}
       />)}
     </>
-
-
-
   )
 }
 

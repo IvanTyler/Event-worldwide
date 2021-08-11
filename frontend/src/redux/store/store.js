@@ -8,6 +8,8 @@ import posterReducer from "../reducers/posterReducer";
 import eventquickReducer from "../reducers/eventquickReducers";
 import eventfullReducer from "../reducers/eventfullReducers";
 import favouriteReducer from "../reducers/favouriteReducer";
+import coordinatesReducer from '../reducers/coordinatesReducer'
+
 
 const rootReducer = combineReducers({
     user: userReducer,
@@ -16,6 +18,7 @@ const rootReducer = combineReducers({
     eventquick: eventquickReducer,
     eventfull : eventfullReducer,
     favourite: favouriteReducer,
+    coordinates: coordinatesReducer,
 })
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))

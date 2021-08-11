@@ -71,9 +71,3 @@ module.exports = router;
 //   Picture: req.body.Picture,
 //   Startdatetime: req.body.Startdatetime
 // })
-
-
-location: {
-  lat: obj.location.latitude,
-  lon: obj.location.longitude,
-},

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import { getFavouriteEvents } from '../../redux/actions/favouriteAC';
 import PersonalAreaFavouriteItem from '../PersonalAreaFavouriteItem/PersonalAreaFavouriteItem'
+import YandexMap from '../YandexMap/YandexMap';
 
 
 
@@ -12,6 +13,10 @@ function PersonalAreaEventlist() {
   const favouriteList = useSelector(state => state.favourite);
   console.log(favouriteList);
 
+  const coordinates = favouriteList.map((item) =>  [item.Event.Category, item.Event.Genre])
+
+
+  console.log(coordinates);
 
   const dispatch = useDispatch()
 
@@ -19,33 +24,23 @@ function PersonalAreaEventlist() {
     dispatch(getFavouriteEvents())
   }, [])
 
- 
+
 
   return (
-    // <List
-    //   itemLayout="horizontal"
-    //   dataSource={favouriteList}
-    //   renderItem={item => (
-    //     <List.Item>
-    //       <List.Item.Meta
-    //         avatar={<Avatar src={item.Event.Picture} />}
-    //         title={<a href={item.Event.Url}>{item.Event.Name}</a>}
-    //         description={item.Event.Startdatetime}
-    //       />
-    //       <Button>Удалить</Button>
-    //     </List.Item>
-    //   )}
-    // />
 
     <>
-     {favouriteList.map((item)=> <PersonalAreaFavouriteItem 
-      id={item.id}
-      avatar={item.Event.Picture}
-      url={item.Event.Url}
-      title={item.Event.Name}
-      description={item.Event.Startdatetime}
-       />)}
-    </> 
+      {favouriteList.map((item) => <PersonalAreaFavouriteItem
+        key={item.id}
+        id={item.id}
+        avatar={item.Event.Picture}
+        url={item.Event.Url}
+        title={item.Event.Name}
+        description={item.Event.Startdatetime}
+      />)}
+      <YandexMap
+        coordinates={coordinates}
+        />
+    </>
   );
 
 }

@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import SearchItem from '../SearchItem/SearchItem'
 function SearchEventList() {
   const eventList = useSelector((state) => state.eventfull);
-  console.log(eventList[0]._embedded.venues[0].location);
 
   return (
     <>
