@@ -1,9 +1,12 @@
 import style from './Header.module.css';
 import styleContainer from '../Container/container.module.css';
+import logo from './img/eww.png'
 
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../redux/actions/userAC';
+import { useEffect, useState } from 'react';
 
 
 function Header() {
@@ -15,22 +18,24 @@ function Header() {
     dispatch(logout(''))
   }
 
+  const location = useLocation();
+  useEffect(() => {
+
+  }, [location]);
+
   return (
     <>
-      <header className={style.header}>
+      <header className={window.location.href === 'http://localhost:3000/signUp' || window.location.href === 'http://localhost:3000/signIn' ? style.headerSignUp : style.header}>
         <div className={`${styleContainer.container} ${style.containerHeader}`}>
           <nav className={style.navHeader}>
             <ul className={style.headerMenu}>
               <li className={style.headerMenuItem}>
                 <Link className={style.headerMenuLink} to="/">
-                  Главная
+                  <div className={style.wrapperHeaderLogo}>
+                    <img className={style.headerLogo} src={logo} alt="" />
+                  </div>
+                  <span className={style.logoText}>event world wide</span>
                 </Link>
-
-
-
-              
-
-
 
                 {user ? (
                   <>
@@ -43,15 +48,12 @@ function Header() {
                     <Link className={style.headerMenuLink} to="/events">
                       Мои события
                     </Link>
-                    <Link className={style.headerMenuLink} to="/personalArea">
-                      Личный кабинет
-                    </Link>
                   </>
                 ) : (
                   console.log(123)
                 )}
               </li>
-              <li>
+              <li className={style.headerMenuItem}>
                 {user ? (
                   <>
                     <Link className={style.headerMenuLink} to="/personalArea">
@@ -64,43 +66,14 @@ function Header() {
                 ) : (
                   <>
                     <Link className={style.headerMenuLink} to="/signUp">
-                      Регистрация
+                      SignUp
                     </Link>
                     <Link className={style.headerMenuLink} to="/signIn">
-                      Авторизация
+                      SignIn
                     </Link>
                   </>
                 )}
               </li>
-              {/* {user && (
-                  <Link className={style.headerMenuLink} to="/search">
-                    Поиск событий
-                  </Link>
-                )}{' '}
-                {user && (
-                  <Link className={style.headerMenuLink} to="/quicksearch">
-                    Быстрый поиск
-                  </Link>
-                )} */}
-              {/* </li>
-              <li className={style.headerMenuItem}>
-                {user && (
-                  <Link className={style.headerMenuLink} to="/personalArea">
-                    Личный кабинет
-                  </Link>
-                )}
-                <Link className={style.headerMenuLink} to="/signUp">
-                  Регистрация
-                </Link>
-                <Link className={style.headerMenuLink} to="/signIn">
-                  Авторизация
-                </Link>
-                {user && (
-                  <Link className={style.headerMenuLink} to="/logout">
-                    Выйти
-                  </Link>
-                )}
-              </li> */}
             </ul>
           </nav>
         </div>

@@ -3,9 +3,11 @@
   list-style: none;
   font-family: Arial, Helvetica, sans-serif;
   padding: 0;
-  margin: 0
+  margin: 0;
+  box-sizing: border-box;
 }
 
-body {
-  background-color: #f4f7fb !important;
+
+.mainSignUp {
+  margin-top: 0;
 }

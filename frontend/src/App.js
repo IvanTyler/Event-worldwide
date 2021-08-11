@@ -2,7 +2,6 @@ import './App.css';
 import Header from './Components/Header/Header';
 import SignUp from './Components/SignUp/SignUp';
 import SignIn from './Components/SignIn/SignIn';
-import PosterList from './Components/PosterList/PosterList';
 import PersonalArea from './Components/PersonalArea/PersonalArea';
 import QuickSearchContainer from './Components/QuickSearchContainer/QuickSearchContainer';
 import SearchContainer from './Components/SearchContainer/SearchContainer';
@@ -14,31 +13,19 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-// import axios from 'axios';
-// import { useEffect } from 'react';
+
 
 function App() {
-  // useEffect(()=> {
-  //   axios.get('https://ikiro.ru/api/')
-  //   .then(res => console.log(res.data, 'DEFENDER'))
-  //   .catch(err => console.log('========>>>', err))
-  // })
-  // useEffect(()=> {
-  //   axios.get('https://ikiro.ru/XYU/')
-  //   .then(res => console.log(res.data))
-  //   .catch(err => console.log('========>>>', err))
-  // })
 
   return (
     <div className="App">
       <Router>
         <Header />
-        <main>
+        <main className='main'>
           <Switch>
 
             <Route exact path="/">
               <DescriptionProject />
-              <PosterList />
             </Route>
 
             <Route exact path="/signUp">
