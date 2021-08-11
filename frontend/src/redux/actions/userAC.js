@@ -99,7 +99,7 @@ export const logout = (clearUser) => async (dispatch) => {
 
 export const userImg = (nameImg, files) => async (dispatch) => {
     console.log('name img -->', nameImg)
-    const response = await fetch('http://localhost:3001/uploadimg', {
+    const response = await fetch('https://ikiro.ru/api/uploadimg', {
         method: 'POST',
         // headers: {
         //     'Content-Type': 'multipart/form-data',
