@@ -3,26 +3,26 @@ import Header from './Components/Header/Header';
 import SignUp from './Components/SignUp/SignUp';
 import SignIn from './Components/SignIn/SignIn';
 import PosterList from './Components/PosterList/PosterList';
-import SearchForm from './Components/SearchForm/SearchForm';
 import PersonalArea from './Components/PersonalArea/PersonalArea';
 import QuickSearchContainer from './Components/QuickSearchContainer/QuickSearchContainer';
 import SearchContainer from './Components/SearchContainer/SearchContainer';
 import DescriptionProject from './Components/DescriptionProject/DescriptiomProject';
+import PersonalAreaEventlist from './Components/PersonalAreaEventlist/PersonalAreaEventlist';
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
-import axios from 'axios';
-import { useEffect } from 'react';
+// import axios from 'axios';
+// import { useEffect } from 'react';
 
 function App() {
-  useEffect(()=> {
-    axios.get('https://ikiro.ru/api/')
-    .then(res => console.log(res.data, 'DEFENDER'))
-    .catch(err => console.log('========>>>', err))
-  })
+  // useEffect(()=> {
+  //   axios.get('https://ikiro.ru/api/')
+  //   .then(res => console.log(res.data, 'DEFENDER'))
+  //   .catch(err => console.log('========>>>', err))
+  // })
   // useEffect(()=> {
   //   axios.get('https://ikiro.ru/XYU/')
   //   .then(res => console.log(res.data))
@@ -34,34 +34,38 @@ function App() {
       <Router>
         <Header />
         <main>
-            <Switch>
+          <Switch>
 
-              <Route exact path="/">
-                <DescriptionProject />
-                <PosterList />
-              </Route>
-              
-              <Route exact path="/signUp">
-                <SignUp />
-              </Route>
+            <Route exact path="/">
+              <DescriptionProject />
+              <PosterList />
+            </Route>
 
-              <Route exact path="/signIn">
-                <SignIn />
-              </Route>
+            <Route exact path="/signUp">
+              <SignUp />
+            </Route>
 
-              <Route exact path="/search">
-                <SearchContainer />
-              </Route>
+            <Route exact path="/signIn">
+              <SignIn />
+            </Route>
 
-              <Route exact path="/quicksearch">
-                <QuickSearchContainer />
-              </Route>
+            <Route exact path="/search">
+              <SearchContainer />
+            </Route>
 
-              <Route exact path="/PersonalArea">
-                <PersonalArea />
-              </Route>
+            <Route exact path="/quicksearch">
+              <QuickSearchContainer />
+            </Route>
 
-            </Switch>
+            <Route exact path="/PersonalArea">
+              <PersonalArea />
+            </Route>
+
+            <Route exact path="/events">
+              < PersonalAreaEventlist />
+            </Route>
+
+          </Switch>
         </main>
       </Router>
     </div>

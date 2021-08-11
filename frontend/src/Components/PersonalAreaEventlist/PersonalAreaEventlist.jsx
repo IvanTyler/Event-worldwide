@@ -13,10 +13,11 @@ function PersonalAreaEventlist() {
   const favouriteList = useSelector(state => state.favourite);
   console.log(favouriteList);
 
-  const coordinates = favouriteList.map((item) =>  [item.Event.Category, item.Event.Genre])
-
+  const coordinates = favouriteList.map((item) => [item.Event.Category, item.Event.Genre, item.Event.Name])
+  // const titles = favouriteList.map((item) => item.Event.Name)
 
   console.log(coordinates);
+  // console.log(titles);
 
   const dispatch = useDispatch()
 
@@ -39,7 +40,7 @@ function PersonalAreaEventlist() {
       />)}
       <YandexMap
         coordinates={coordinates}
-        />
+      />
     </>
   );
 

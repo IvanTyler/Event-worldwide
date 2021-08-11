@@ -5,9 +5,8 @@ import { useDispatch } from 'react-redux';
 import { saveUserDataPersonalArea } from '../../redux/actions/userAC'
 import ImageUploading from 'react-images-uploading';
 import axios from 'axios'
-import PersonalAreaEventlist from '../PersonalAreaEventlist/PersonalAreaEventlist'
 import { useRef, useState } from 'react'
-import YandexMap from '../YandexMap/YandexMap';
+
 
 function PersonalArea() {
   let countryList = [
@@ -211,7 +210,6 @@ function PersonalArea() {
           </form>
         </div>
       </section>
-      <PersonalAreaEventlist />
     </>
   )
 }

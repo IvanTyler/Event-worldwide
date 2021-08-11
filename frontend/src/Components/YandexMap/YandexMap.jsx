@@ -1,10 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { YMaps, Map, Placemark, RouteButton, GeolocationControl, Clusterer, RoutePanel } from 'react-yandex-maps'
-import { getFavouriteEventsCoordinates } from '../../redux/actions/coordinatesAC';
-
-
-
 
 const key = '8e9545a2-e9af-4d9c-ba75-fbb790e86b52'
 
@@ -28,8 +24,9 @@ function YandexMap({ coordinates }) {
         {coordinates.map(coordinate => <Placemark
           geometry={coordinate}
           properties={{
-            iconContent: '!!!' // title
-          }} />)}
+            iconCaption : coordinate[2]
+        }}
+           />)}
       </Map>
     </YMaps>
   )
