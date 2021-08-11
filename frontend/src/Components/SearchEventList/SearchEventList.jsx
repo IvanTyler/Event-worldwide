@@ -2,7 +2,7 @@ import { List, Avatar } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import SearchItem from '../SearchItem/SearchItem'
 function SearchEventList() {
-  const eventList = useSelector((state) => state.event);
+  const eventList = useSelector((state) => state.eventfull);
 
   return (
     <>

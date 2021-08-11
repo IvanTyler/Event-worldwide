@@ -3,6 +3,7 @@ const initState = {
   id: '',
   events: '',
   subscribes: [],
+  avatar: '',
 }
 
 
