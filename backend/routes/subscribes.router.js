@@ -6,34 +6,37 @@ const router = express.Router();
 router.route('/')
   .get(async (req, res) => {
     try {
+      // console.log('ya tutu');
       // const allSubscribes = await db.Subscribe.findAll({
       //   where: { Userid: req.session.user.id }, include: [db.User, db.Event],
       // });
       const allSubscribes = await db.Subscribe.findAll({include: [db.User, db.Event]})
-      console.log(allSubscribes);
+      console.log('fav--->', allSubscribes);
       return res.json(allSubscribes).status(200);
     } catch (error) {
       return res.sendStatus(500);
     }
   })
   .post(async (req, res) => {
+    console.log('location---->', req.body);
     try {
       const {
-        Picture, Url, Name, Startdatetime
+        Picture, Url, Name, Startdatetime, location
       } = req.body;
-      console.log(req.body);
-      if (Picture && Url && Name && Startdatetime) {
+      
+      if (Picture && Url && Name && Startdatetime, location) {
         const newEvent = await db.Event.create(
           {
-            Picture, Url, Name, Startdatetime,
+            Picture, Url, Name, Startdatetime, Category: location.lat, Genre: location.lon
           },
           { returning: true, plain: true },
         );
-        console.log(newEvent);
+        
+        // console.log('session---->', req.session.user);
         // const newSubscribe = await db.Subscribe.create({ Userid: req.session.user.id, Eventid: newEvent.id },{ returning: true, plain: true })
         const newSubscribe = await db.Subscribe.create({ Eventid: newEvent.id },{ returning: true, plain: true })
 
-        console.log(newSubscribe);
+        // console.log(newSubscribe);
         return res.status(201).json(newSubscribe);
       }
       return res.sendStatus(406);
@@ -68,3 +71,9 @@ module.exports = router;
 //   Picture: req.body.Picture,
 //   Startdatetime: req.body.Startdatetime
 // })
+
+
+location: {
+  lat: obj.location.latitude,
+  lon: obj.location.longitude,
+},

@@ -5,7 +5,7 @@ import { addOneSubscribe } from '../../redux/actions/subscribeAC';
 
 
 
-function SearchItem({ avatar, title, description, url, key, id }) {
+function SearchItem({ location, avatar, title, description, url, key, id }) {
 
   const dispatch = useDispatch()
 
@@ -14,7 +14,11 @@ function SearchItem({ avatar, title, description, url, key, id }) {
       Picture: obj.avatar.props.src,
       Url: obj.url,
       Name: obj.title.props.children,
-      Startdatetime: obj.description
+      Startdatetime: obj.description,
+      location: {
+        lat: obj.location.latitude,
+        lon: obj.location.longitude,
+      },
     }
     console.log(data);
     dispatch(addOneSubscribe(data))
@@ -32,7 +36,7 @@ function SearchItem({ avatar, title, description, url, key, id }) {
             description={description}
           />
 
-          <Button onClick={() => addSubscribe({ avatar, url, title, description })} on type="primary" shape="circle">+</Button>
+          <Button onClick={() => addSubscribe({ avatar, url, title, description,location })} on type="primary" shape="circle">+</Button>
         </List.Item>
         :
         <p>Download</p>

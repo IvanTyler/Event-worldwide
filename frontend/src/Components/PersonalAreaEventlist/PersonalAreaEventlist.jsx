@@ -10,6 +10,7 @@ import PersonalAreaFavouriteItem from '../PersonalAreaFavouriteItem/PersonalArea
 function PersonalAreaEventlist() {
 
   const favouriteList = useSelector(state => state.favourite);
+  console.log(favouriteList);
 
 
   const dispatch = useDispatch()

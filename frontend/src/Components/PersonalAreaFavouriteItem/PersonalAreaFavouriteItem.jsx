@@ -16,7 +16,9 @@ function PersonalAreaFavouriteItem ({id, url, avatar, description, title}) {
       title={<a href={url}>{title}</a>}
       description={description}
     />
+    <Button>На карте</Button>
     <Button onClick={handlerDeleter}>Удалить</Button>
+
   </List.Item>
   )
 }

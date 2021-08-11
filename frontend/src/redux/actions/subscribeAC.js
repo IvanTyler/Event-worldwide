@@ -29,6 +29,7 @@ export function createSubscribe(value) {
 export const addOneSubscribe = (data) => async (dispatch) => {
   console.log('------>', data);
   const oneSubscribe = await axios.post('http://localhost:3001/api/v1/subscribes',  data )
+  console.log(oneSubscribe.data);
   dispatch(createSubscribe(oneSubscribe.data))
 }
 

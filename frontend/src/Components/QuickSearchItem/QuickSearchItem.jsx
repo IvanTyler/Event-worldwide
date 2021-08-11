@@ -5,7 +5,7 @@ import { addOneSubscribe } from '../../redux/actions/subscribeAC';
 
 
 
-function QuickSearchItem({ avatar, title, description, url, key, id }) {
+function QuickSearchItem({ location, avatar, title, description, url, key, id }) {
 
   const dispatch = useDispatch()
 
@@ -14,7 +14,8 @@ function QuickSearchItem({ avatar, title, description, url, key, id }) {
       Picture: obj.avatar.props.src,
       Url: obj.url,
       Name: obj.title.props.children,
-      Startdatetime: obj.description
+      Startdatetime: obj.description,
+     location: obj.location
     }
     console.log(data);
     dispatch(addOneSubscribe(data))
@@ -30,9 +31,11 @@ function QuickSearchItem({ avatar, title, description, url, key, id }) {
             avatar={<Avatar src={avatar} />}
             title={<a href={url}>{title}</a>}
             description={description}
+            // lat={lat}
+            // lon={lon}
           />
 
-          <Button onClick={() => addSubscribe({ avatar, url, title, description })} on type="primary" shape="circle">+</Button>
+          <Button onClick={() => addSubscribe({ avatar, url, title, description, location })} on type="primary" shape="circle">+</Button>
         </List.Item>
         :
         <p>Download</p>
