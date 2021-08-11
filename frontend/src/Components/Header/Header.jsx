@@ -28,18 +28,7 @@ function Header() {
 
 
 
-                <Link className={style.headerMenuLink} to="/search">
-                  Поиск событий
-                </Link>
-                <Link className={style.headerMenuLink} to="/quicksearch">
-                  Быстрый поиск
-                </Link>
-                <Link className={style.headerMenuLink} to="/events">
-                  Мои события
-                </Link>
-                <Link className={style.headerMenuLink} to="/personalArea">
-                  Личный кабинет
-                </Link>
+              
 
 
 

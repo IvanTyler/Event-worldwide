@@ -30,6 +30,7 @@ function PersonalAreaEventlist() {
   return (
 
     <>
+    <p>Текущие события</p>
       {favouriteList.map((item) => <PersonalAreaFavouriteItem
         key={item.id}
         id={item.id}

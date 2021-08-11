@@ -18,7 +18,7 @@ router.route('/')
     }
   })
   .post(async (req, res) => {
-    console.log('location---->', req.body);
+    console.log('sessia---->', req.session.user);
     try {
       const {
         Picture, Url, Name, Startdatetime, location

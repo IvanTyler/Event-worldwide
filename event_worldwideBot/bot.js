@@ -1,28 +1,40 @@
+require("dotenv").config();
 const { Telegraf } = require('telegraf')
-const bot = new Telegraf('1900241024:AAF0Mh-Ibq9PbPEG-iy0kwu2B4H21xg23eA') //сюда помещается токен, который дал botFather
+const bot = new Telegraf(process.env.TELEGRAM_TOKEN_EDU) //сюда помещается токен, который дал botFather
 const axios = require('axios')
 const apiUrl = 'http://localhost:3001/api/v1/subscribes'
 
 //ответ бота на команду /start
 bot.start(ctx => ctx.reply(`
    Привет, ${ctx.from.first_name}!
-Введи events и получи список своих избранных событий.
+Введи команду /events и получи список своих избранных событий.
 `))
+
+//ответ бота на команду /whoami
+bot.command("whoami", (ctx) => {
+  const { id, username, first_name, last_name } = ctx.from;
+  return ctx.replyWithMarkdown(`Кто ты в телеграмме:
+*id* : ${id}
+*username* : ${username}
+*Имя* : ${first_name}
+*Фамилия* : ${last_name}
+*chatId* : ${ctx.chat.id}`);
+});
 
 bot.help((ctx) => ctx.reply('Send me a sticker')) //ответ бота на команду /help
 bot.on('sticker', (ctx) => ctx.reply('')) //bot.on это обработчик введенного юзером сообщения, в данном случае он отслеживает стикер, можно использовать обработчик текста или голосового сообщения
 bot.hears('hi', (ctx) => ctx.reply(`Hello, ${ctx.from.first_name}!`)) // bot.hears это обработчик конкретного текста, данном случае это - "hi"
-// bot.hears('events', (ctx) => ctx.reply('Hey there')) // bot.hears это обработчик конкретного текста, данном случае это - "hi"
 
 
-bot.hears('events', async (ctx) => {
+bot.command('events', async (ctx) => {
   try {
     const events = await axios(apiUrl)
     const data = events.data
+
     let text = data.map((event) => {
-      console.log('one--->', event);
       return (`Название: ${event.Event.Name}; Фото: ${event.Event.Picture}; Ссылка на билет: ${event.Event.Url}; Начало: ${event.Event.Startdatetime}`)
     })
+
     console.log(text);
     ctx.reply(text)
   } catch (e) {

@@ -22,7 +22,7 @@ export const deleteUser = (clearUser) => {
 };
 
 export const getFormUserData = (userName, email, password, city, phone) => async (dispatch) => {
-    const response = await fetch('https://ikiro.ru/api/signUp', {
+    const response = await fetch('http://localhost:3001/api/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ export const getFormUserData = (userName, email, password, city, phone) => async
 
 export const getFormUserDataAuth = (email, password) => async (dispatch) => {
     console.log(email, password);
-    const response = await fetch('https://ikiro.ru/api/signin', {
+    const response = await fetch('http://localhost:3001/api/signin', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ export const saveUserDataPersonalArea = (personalDataUser) => async (dispatch) =
 };
 
 export const logout = (clearUser) => async (dispatch) => {
-    const response = await fetch('https://ikiro.ru/api/logout', {
+    const response = await fetch('http://localhost:3001/api/logout', {
         credentials: 'include',
     })
     dispatch(deleteUser(clearUser));
