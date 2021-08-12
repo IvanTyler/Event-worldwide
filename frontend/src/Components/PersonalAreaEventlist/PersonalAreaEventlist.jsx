@@ -36,7 +36,7 @@ function PersonalAreaEventlist() {
     <>
       <div className={style.wrapperEvents}>
         <div className={styleContainer.container + ' ' + style.PersonalAreaEventlistContainer}>
-          <h2 class={styleSignUp.HeaderformTop}>Текущие события</h2>
+          <h2 class={styleSignUp.HeaderformTop + ' ' + style.HeaderformTop}>Текущие события</h2>
 
           {favouriteList.map((item) => <PersonalAreaFavouriteItem
             key={item.id}
