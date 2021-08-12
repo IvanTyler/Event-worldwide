@@ -8,7 +8,6 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'http://87.249.49.53:3001';
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
