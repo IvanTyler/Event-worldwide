@@ -10,6 +10,11 @@
     border-radius: 5px;
 }
 
+.QuickSearchEventList {
+    margin-top: 20px;
+    padding: 20px;
+}
+
 .searchContainer > form > div {
     display: flex;
     flex-direction: column;

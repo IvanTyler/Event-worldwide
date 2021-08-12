@@ -6,6 +6,10 @@ import { getFavouriteEvents } from '../../redux/actions/favouriteAC';
 import PersonalAreaFavouriteItem from '../PersonalAreaFavouriteItem/PersonalAreaFavouriteItem'
 import YandexMap from '../YandexMap/YandexMap';
 
+import styleContainer from '../Container/container.module.css';
+import style from './PersonalAreaEventlist.module.css'
+import styleSignUp from '../SignUp/SignUp.module.css'
+
 
 
 function PersonalAreaEventlist() {
@@ -30,15 +34,18 @@ function PersonalAreaEventlist() {
   return (
 
     <>
-    <p>Текущие события</p>
-      {favouriteList.map((item) => <PersonalAreaFavouriteItem
-        key={item.id}
-        id={item.id}
-        avatar={item.Event.Picture}
-        url={item.Event.Url}
-        title={item.Event.Name}
-        description={item.Event.Startdatetime}
-      />)}
+      <div className={styleContainer.container + ' ' + style.PersonalAreaEventlistContainer}>
+        <h2 class={styleSignUp.HeaderformTop}>Текущие события</h2>
+
+        {favouriteList.map((item) => <PersonalAreaFavouriteItem
+          key={item.id}
+          id={item.id}
+          avatar={item.Event.Picture}
+          url={item.Event.Url}
+          title={item.Event.Name}
+          description={item.Event.Startdatetime}
+        />)}
+      </div>
       <YandexMap
         coordinates={coordinates}
       />
