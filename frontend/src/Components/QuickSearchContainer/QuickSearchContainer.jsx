@@ -11,7 +11,9 @@ function QuickSearchContainer() {
       <div className={styleContainer.container + ' ' + style.QuickSearchContainer}>
         <div class={styleSignUp.HeaderformTop}>Поиск событий</div>
         <QuickSearchForm />
-        <QuickSearchEventList />
+        <div className={style.QuickSearchEventList}>
+          <QuickSearchEventList />
+        </div>
       </div>
     </>
   )
