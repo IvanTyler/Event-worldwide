@@ -35,7 +35,7 @@ function SearchItem({ location, avatar, title, description, url, key, id }) {
             description={description}
           />
 
-<Button onClick={() => addSubscribe({ avatar, url, title, description, location })} on type="primary" shape="circle">+</Button>
+          <Button onClick={() => addSubscribe({ avatar, url, title, description, location })} on type="primary" shape="circle">Add</Button>
 
         </List.Item>
         :
