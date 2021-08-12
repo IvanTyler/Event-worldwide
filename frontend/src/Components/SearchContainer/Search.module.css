@@ -1,10 +1,11 @@
 .searchContainer {
     margin-top: 50px;
-    max-width: 1000px;
+    max-width: 850px;
+    box-shadow: 0 0 30px rgb(0 0 0 / 15%);
+    padding: 0;
 }
 
 .searchContainer > form{
-    box-shadow: 0 0 30px rgb(0 0 0 / 15%);
     padding: 20px;
     border-radius: 5px;
 }

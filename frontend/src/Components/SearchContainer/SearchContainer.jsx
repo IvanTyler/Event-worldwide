@@ -9,7 +9,7 @@ function SearchContainer() {
   return (
     <>
       <div className={styleContainer.container + ' ' + style.searchContainer}>
-      <div class={styleSignUp.HeaderformTop}>Search events</div>
+      <div class={styleSignUp.HeaderformTop}>Поиск событий</div>
         <SearchForm />
         <SearchEventList />
       </div>
