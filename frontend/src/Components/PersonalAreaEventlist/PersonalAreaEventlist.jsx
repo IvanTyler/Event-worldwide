@@ -38,14 +38,17 @@ function PersonalAreaEventlist() {
         <div className={styleContainer.container + ' ' + style.PersonalAreaEventlistContainer}>
           <h2 class={styleSignUp.HeaderformTop + ' ' + style.HeaderformTop}>Текущие события</h2>
 
-          {favouriteList.map((item) => <PersonalAreaFavouriteItem
+          {favouriteList.length ? favouriteList.map((item) => <PersonalAreaFavouriteItem
             key={item.id}
             id={item.id}
             avatar={item.Event.Picture}
             url={item.Event.Url}
             title={item.Event.Name}
             description={item.Event.Startdatetime}
-          />)}
+          />)
+        :
+        <p>Событий нет</p>
+        }
         </div>
         <YandexMap
           coordinates={coordinates}

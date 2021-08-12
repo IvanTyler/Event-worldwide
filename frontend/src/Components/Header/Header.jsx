@@ -16,6 +16,11 @@ function Header() {
 
   const menuNav = useRef(null)
 
+  const sandwitch_1 = useRef(null)
+  const sandwitch_2 = useRef(null)
+  const sandwitch_3 = useRef(null)
+
+
   const [menuNavBar, setmenuNavBar] = useState(false)
 
   const logoutSession = () => {
@@ -32,9 +37,19 @@ function Header() {
     console.log(menuNav.current)
     if (menuNavBar === false) {
       menuNav.current.style.right = '0'
+      sandwitch_1.current.style.transform = "rotate(45deg)"
+      sandwitch_1.current.style.position = "relative"
+      sandwitch_1.current.style.top = "7px"
+      sandwitch_2.current.style.display = "none"
+      sandwitch_3.current.style.transform = "rotate(-45deg)"
       setmenuNavBar(true)
     } else if (menuNavBar === true) {
       menuNav.current.style.right = '-320px'
+      sandwitch_1.current.style.transform = "rotate(0deg)"
+      sandwitch_1.current.style.position = "static"
+      sandwitch_1.current.style.top = "0"
+      sandwitch_2.current.style.display = "block"
+      sandwitch_3.current.style.transform = "rotate(0deg)"
       setmenuNavBar(false)
     }
   }
@@ -69,9 +84,9 @@ function Header() {
                       Выйти
                     </Link>
                     <div onClick={() => showNavbar()} class={style.headerSandwich}>
-                      <div class={style.sandwichItem}></div>
-                      <div class={style.sandwichItem}></div>
-                      <div class={style.sandwichItem}></div>
+                      <div ref={sandwitch_1} class={style.sandwichItem + ' ' + style.sandwith_1}></div>
+                      <div ref={sandwitch_2} class={style.sandwichItem + ' ' + style.sandwith_2}></div>
+                      <div ref={sandwitch_3} class={style.sandwichItem + ' ' + style.sandwith_3}></div>
                     </div>
                   </>
                 ) : (

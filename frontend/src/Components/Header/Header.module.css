@@ -135,6 +135,10 @@
     margin-top: 5px;
 }
 
+.sandwith_1, .sandwith_2, .sandwith_3{
+  transform: rotate(0deg);
+}
+
 
 .telegramBlock {
     margin-left: 10px;

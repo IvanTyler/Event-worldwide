@@ -8,7 +8,7 @@ function DescriptionProject() {
         <div className={styleContainer.container + ' ' + style.containerDescription}>
           <h1 className={style.sectionDescriptionTitle}>Event worldwide</h1>
           <p className={style.sectionDescriptionText}>
-            Сервис по поиску мероприятий и событий
+             Find your next event
           </p>
         </div>
       </section>
