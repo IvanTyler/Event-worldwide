@@ -1,0 +1,42 @@
+.QuickSearchContainer {
+    margin-top: 50px;
+    max-width: 850px;
+    box-shadow: 0 0 30px rgb(0 0 0 / 15%);
+    padding: 0;
+}
+
+.QuickSearchContainer > form{
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.QuickSearchContainer > form > div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+}
+
+/* .QuickSearchContainer > form > div:last-of-type > div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+} */
+
+.QuickSearchContainer > form > div:not(:last-of-type) {
+    margin-bottom: 13px;
+}
+
+.QuickSearchContainer > form > div > div:first-of-type {
+    max-width: 130px;
+    text-align: left;
+    margin-left: 0;
+}
+
+.QuickSearchContainer > form > div > div:first-of-type > label {
+    height: inherit;
+}
+
+.QuickSearchContainer > form > div > div:nth-child(2) {
+    margin-top: 5px;
+    max-width: 100%;
+}

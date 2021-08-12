@@ -11,3 +11,8 @@
 .mainSignUp {
   margin-top: 0;
 }
+
+.App {
+  overflow: hidden;
+  height: 100vh;
+}
