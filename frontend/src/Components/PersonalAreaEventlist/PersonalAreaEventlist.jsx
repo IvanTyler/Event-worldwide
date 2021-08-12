@@ -34,21 +34,23 @@ function PersonalAreaEventlist() {
   return (
 
     <>
-      <div className={styleContainer.container + ' ' + style.PersonalAreaEventlistContainer}>
-        <h2 class={styleSignUp.HeaderformTop}>Текущие события</h2>
+      <div className={style.wrapperEvents}>
+        <div className={styleContainer.container + ' ' + style.PersonalAreaEventlistContainer}>
+          <h2 class={styleSignUp.HeaderformTop}>Текущие события</h2>
 
-        {favouriteList.map((item) => <PersonalAreaFavouriteItem
-          key={item.id}
-          id={item.id}
-          avatar={item.Event.Picture}
-          url={item.Event.Url}
-          title={item.Event.Name}
-          description={item.Event.Startdatetime}
-        />)}
+          {favouriteList.map((item) => <PersonalAreaFavouriteItem
+            key={item.id}
+            id={item.id}
+            avatar={item.Event.Picture}
+            url={item.Event.Url}
+            title={item.Event.Name}
+            description={item.Event.Startdatetime}
+          />)}
+        </div>
+        <YandexMap
+          coordinates={coordinates}
+        />
       </div>
-      <YandexMap
-        coordinates={coordinates}
-      />
     </>
   );
 
