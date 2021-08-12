@@ -61,7 +61,7 @@ function Header() {
                   <span className={style.logoText}>Event worldwide</span>
                 </Link>
 
-                {user ? (
+                {/* {user ? (
                   <>
                     <Link className={style.headerMenuLink} to="/search">
                       Поиск событий
@@ -75,7 +75,7 @@ function Header() {
                   </>
                 ) : (
                   console.log(123)
-                )}
+                )} */}
               </li>
               <li className={style.headerMenuItem}>
                 {user ? (
@@ -103,7 +103,7 @@ function Header() {
             </ul>
           </nav>
         </div>
-        <div ref={menuNav} className={style.menuNav}>
+        {user ? <div ref={menuNav} className={style.menuNav}>
           <div className={style.menuNavItem}>
             <Link className={style.headerMenuLink} to="/personalArea">
               Личный кабинет
@@ -132,7 +132,7 @@ function Header() {
               <span className={style.telegramBot}>Телеграм бот</span>
             </Link>
           </div>
-        </div>
+        </div> : console.log()}
       </header>
     </>
   );

@@ -122,6 +122,8 @@
 .headerSandwich {
     display: inline-block;
     cursor: pointer;
+    position: relative;
+    z-index: 2;
 }
 
 .sandwichItem {
