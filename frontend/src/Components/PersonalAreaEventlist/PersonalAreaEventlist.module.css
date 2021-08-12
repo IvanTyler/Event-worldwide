@@ -1,13 +1,18 @@
 .PersonalAreaEventlistContainer {
     margin-top: 50px;
-    max-width: 850px;
+    width: 850px;
     box-shadow: 0 0 30px rgb(0 0 0 / 15%);
     padding: 0;
 }
 
+.HeaderformTop {
+    margin-bottom: 0;
+}
 
-.wrapperEvents > div:last-child{
-    position: absolute;
-    bottom: 0;
+.wrapperEvents {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
