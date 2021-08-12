@@ -1,36 +1,53 @@
 import style from './Header.module.css';
 import styleContainer from '../Container/container.module.css';
-import logo from './img/eww.png'
+import logo from './img/eww.png';
 
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../redux/actions/userAC';
 import { useEffect, useState } from 'react';
 
-
 function Header() {
-  const dispatch = useDispatch()
-  const user = useSelector((state) => state.user.id);
-  console.log(user);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const HomeButton = () => {
+    history.push('/');
+  };
 
+  const user = useSelector((state) => state.user.user);
+  // console.log(user)
   const logoutSession = () => {
-    dispatch(logout(''))
-  }
+    dispatch(logout(''));
+    localStorage.clear();
+    HomeButton();
+  };
+  useEffect(()=> {
+    if(user.id) {
+      // localStorage.setItem('id', user.id)
+      // localStorage.setItem('Name', user.Name)
+      // localStorage.setItem('email', user.email)
+      // localStorage.setItem('City', user.City)
+      // localStorage.setItem('phone', user.Userphonenumber)
+      // localStorage.setItem('photo', user.Userphoto)
+      // localStorage.setItem('password', user.password)
+    }
+  },[user]);
 
   const location = useLocation();
-  useEffect(() => {
-
-  }, [location]);
+  useEffect(() => {}, [location]);
 
   return (
     <>
-      <header className={
-        window.location.href === 'http://localhost:3000/signUp' ||
-          window.location.href === 'http://localhost:3000/signIn' ||
-          window.location.href === 'http://localhost:3000/personalArea' ?
-          style.headerRest : style.header
-      }>
+      <header
+        className={
+          window.location.href === 'https://ikiro.ru/signUp' ||
+          window.location.href === 'https://ikiro.ru/signIn' ||
+          window.location.href === 'https://ikiro.ru/personalArea'
+            ? style.headerRest
+            : style.header
+        }
+      >
         <div className={`${styleContainer.container} ${style.containerHeader}`}>
           <nav className={style.navHeader}>
             <ul className={style.headerMenu}>
@@ -42,7 +59,7 @@ function Header() {
                   <span className={style.logoText}>event world wide</span>
                 </Link>
 
-                {user ? (
+                {localStorage.Name ? (
                   <>
                     <Link className={style.headerMenuLink} to="/search">
                       Поиск событий
@@ -59,12 +76,12 @@ function Header() {
                 )}
               </li>
               <li className={style.headerMenuItem}>
-                {user ? (
+                {localStorage.Name ? (
                   <>
                     <Link className={style.headerMenuLink} to="/personalArea">
                       Личный кабинет
                     </Link>
-                    <Link onClick={() => logoutSession()} className={style.headerMenuLink} to="/logout">
+                    <Link onClick={() => logoutSession()} className={style.headerMenuLink}>
                       Выйти
                     </Link>
                   </>

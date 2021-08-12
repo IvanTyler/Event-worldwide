@@ -9,7 +9,7 @@ export function setAll(value) {
 }
 
 export const getFavouriteEvents = () => async (dispatch) => {
-  const favouriteEvents = await axios('http://localhost:3001/api/v1/subscribes');
+  const favouriteEvents = await axios('https://ikiro.ru/api/subscribes');
   dispatch(setAll(favouriteEvents.data))
 }
 
@@ -23,7 +23,7 @@ export function deleteFavourite(id) {
 
 
 export const removeFavourite = (id) => async (dispatch) => {
-  await axios.delete('http://localhost:3001/api/v1/subscribes', { data: { id } });
+  await axios.delete('https://ikiro.ru/api/subscribes', { data: { id } });
   dispatch(deleteFavourite(id))
 }
 

@@ -17,7 +17,6 @@ function QuickSearchItem({ location, avatar, title, description, url, key, id })
       Startdatetime: obj.description,
       location: obj.location
     }
-    console.log(data);
     dispatch(addOneSubscribe(data))
   }
 

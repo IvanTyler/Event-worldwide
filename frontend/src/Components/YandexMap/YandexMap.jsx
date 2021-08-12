@@ -5,7 +5,6 @@ import { YMaps, Map, Placemark, RouteButton, GeolocationControl, Clusterer, Rout
 const key = '8e9545a2-e9af-4d9c-ba75-fbb790e86b52'
 
 function YandexMap({ coordinates }) {
-  console.log(coordinates);
 
   return (
 

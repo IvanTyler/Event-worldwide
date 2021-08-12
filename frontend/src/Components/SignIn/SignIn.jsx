@@ -2,12 +2,19 @@
 import SignUp from '../SignUp/SignUp.module.css'
 import styleContainer from '../Container/container.module.css'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getFormUserDataAuth } from '../../redux/actions/userAC';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function SignIn() {
     const dispatch = useDispatch()
+    const history = useHistory();
+    const HomeButton = () => {
+      history.push("/");
+  }
+  const user = useSelector(state => state.user.user)
+
 
     const [inputEmail, setInputEmail] = useState('')
     const [inputPassword, setInputPassword] = useState('')
@@ -19,10 +26,24 @@ function SignIn() {
     const inputHandlerPassword = (event) => {
         setInputPassword(event.target.value)
     }
+    useEffect(()=> {
+      if(user.id) {
+        localStorage.setItem('id', user.id)
+        localStorage.setItem('Name', user.Name)
+        localStorage.setItem('email', user.email)
+        localStorage.setItem('City', user.City)
+        localStorage.setItem('phone', user.phone)
+        localStorage.setItem('photo', user.Userphoto)
+        localStorage.setItem('password', user.password)
+        // window.location.replace('http://localhost:3000/')
+        HomeButton();
+      }
+    },[user]);
 
     const submitHandler = (event) => {
         event.preventDefault()
         dispatch(getFormUserDataAuth(inputEmail, inputPassword))
+        // HomeButton();
     }
 
     return (

@@ -54,15 +54,13 @@ export const getFormUserData = (userName, email, password, city, phone) => async
         })
     })
     const data = await response.json()
-    console.log(data)
-    console.log('user --->>>', data.Name)
+    // console.log('user --->>>', data.Name)
 
-    dispatch(addUser(data.Name))
-    dispatch(addID(data.id))
+    dispatch(addUser(data))
+    // dispatch(addID(data.id))
 }
 
 export const getFormUserDataAuth = (email, password) => async (dispatch) => {
-    console.log(email, password);
     const response = await fetch('http://localhost:3001/api/signin', {
         method: 'POST',
         headers: {
@@ -75,19 +73,39 @@ export const getFormUserDataAuth = (email, password) => async (dispatch) => {
         }),
     });
     const data = await response.json();
-    console.log(data);
-    dispatch(addUser(data.Name));
-    dispatch(addID(data.id));
+    dispatch(addUser(data));
+    // dispatch(addID(data.id));
 };
 
-export const saveUserDataPersonalArea = (personalDataUser) => async (dispatch) => {
-    console.log('action --->', personalDataUser);
+export const saveUserDataPersonalArea = (userInfo) => async (dispatch) => {
+  const response = await fetch('http://localhost:3001/api/user', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+    body: JSON.stringify({
+      userInfo
+    }),
+  });
+  const newUser = await response.json();
+  console.log(newUser)
+  localStorage.id = newUser.id
+    localStorage.Name = newUser.Name
+    localStorage.email = newUser.email
+    localStorage.City = newUser.City
+    localStorage.phone = newUser.Userphonenumber
+    
+    localStorage.photo = newUser.Userphoto
+    localStorage.password = newUser.password
+  dispatch(addUser(newUser));
 };
+
+
 
 export const logout = (clearUser) => async (dispatch) => {
     const response = await fetch('http://localhost:3001/api/logout', {
         credentials: 'include',
-
     })
     dispatch(deleteUser(clearUser));
     dispatch(deleteIdUser(clearUser));
@@ -96,29 +114,5 @@ export const logout = (clearUser) => async (dispatch) => {
     dispatch(deleteUser(clearUser));
 }
 
-export const userImg = (nameImg, files) => async (dispatch) => {
-    console.log('name img -->', nameImg)
-    const response = await fetch('https://ikiro.ru/api/uploadimg', {
-        method: 'POST',
-        // headers: {
-        //     'Content-Type': 'multipart/form-data',
-        // },
-        // credentials: 'include',
-        body: nameImg,
-        files: files
-    })
 
-    const data = await response.json();
-    console.log('server', data);
-    dispatch(addUserAvatar(data.avatar))
-}
-
-// export const userImg = (formData) => async (dispatch) => {
-//   console.log('======>>>>>>>', formData);
-//   const response = await axios.post('https://ikiro.ru/api/uploadimg', formData, {
-//   }).then(res => {
-//     console.log(res)
-//   })
-// }
-
-export default { addUser, getFormUserData, logout, userImg };
+export default { addUser, getFormUserData, logout };
