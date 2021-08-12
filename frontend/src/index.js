@@ -6,7 +6,6 @@ import { Provider } from 'react-redux'
 import { store } from './redux/store/store'
 import axios from 'axios';
 
-
 axios.defaults.baseURL = 'http://87.249.49.53:3001';
 
 

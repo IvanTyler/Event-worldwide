@@ -39,6 +39,8 @@ function PersonalAreaEventlist() {
         title={item.Event.Name}
         description={item.Event.Startdatetime}
       />)}
+    <p>Cобытия на карте</p>
+
       <YandexMap
         coordinates={coordinates}
       />
