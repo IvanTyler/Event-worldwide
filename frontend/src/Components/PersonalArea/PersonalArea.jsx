@@ -4,7 +4,9 @@ import CountryItem from '../CountryItem/CountryItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveUserDataPersonalArea } from '../../redux/actions/userAC';
 import { userImg } from '../../redux/actions/userAC';
-import { useRef, useState } from 'react';
+import { useRef, useState, useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
+import axios from 'axios';
 
 // const ImageThumb = ({ image, avatarUser }) => {
 //     return <img ref={avatarUser} className={style.userAvatar} src={URL.createObjectURL(image)} alt={image.name} />;
@@ -137,41 +139,48 @@ function PersonalArea() {
     setImgUpload(event.target.files[0]);
   };
 
-  const downloadAvatarUser = (e) => {
-    e.preventDefault();
-    const files = e.target.imgUpload.files[0];
-    const hello = new FormData()
-    hello.append('files', e.target.imgUpload.files[0])
-    console.log(e.target.imgUpload.files[0])
-    console.log('formData ++++++++++++++++++++', hello)
-    console.log(files)
-    dispatch(userImg(hello, files))
-  }
+  // const downloadAvatarUser = (e) => {
+  //   e.preventDefault();
+  //   const files = e.target.imgUpload.files[0];
+  //   const hello = new FormData()
+  //   hello.append('files', e.target.imgUpload.files[0])
+  //   console.log(e.target.imgUpload.files[0])
+  //   console.log('formData ++++++++++++++++++++', hello)
+  //   console.log(files)
+  //   dispatch(userImg(hello, files))
+  // }
+  function MyDropzone() {
+    const onDrop = useCallback((acceptedFiles) => {
+      const formData = new FormData();
+      formData.append('file', acceptedFiles[0]);
+      axios.post('https://ikiro.ru/api/uploadimg', formData);
+    }, []);
+    const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
+    return (
+      <div className={style.personalData_avatar} {...getRootProps()}>
+        <div className={style.personalData_imgBg}>
+          <img src={avatar} alt="" />
+          <div className={style.personalDat_updateImg}>
+            <div className={style.fon}></div>
+            <div class={style.updateImg}>
+              <input {...getInputProps()} onClick={'none'} class={style.personalDat_FileInput} name="imgUpload" type="file" />
+            </div>
+          </div>
+        </div>
+        <div className={style.personalData_name}>Ivan</div>
+        <button className={style.submitImg}>Загрузить img</button>
+      </div>
+    );
+  }
 
   return (
     <>
       <section className={style.sectionPersonalArea}>
         <div className={styleContainer.container + ' ' + style.containerPersonalData}>
-
           <h2 className={style.personalAreaTitle}>Personal area</h2>
           <div className={style.personalAreaContent}>
-            <div className={style.personalData_avatar}>
-              <form onSubmit={downloadAvatarUser} action="" enctype="multipart/form-data">
-                <div className={style.personalData_imgBg}>
-                  {/* {imgUpload && <ImageThumb  className={style.personalData_imgContent} image={imgUpload} avatarUser={avatarUser} />} */}
-                  <img src={avatar} alt="" />
-                  <div className={style.personalDat_updateImg}>
-                    <div className={style.fon}></div>
-                    <div class={style.updateImg}>
-                      <input onChange={fileSelectedHandler} class={style.personalDat_FileInput} name="imgUpload" type="file" />
-                    </div>
-                  </div>
-                </div>
-                <div className={style.personalData_name}>Ivan</div>
-                <button className={style.submitImg}>Загрузить img</button>
-              </form>
-            </div>
+            <MyDropzone />
 
             <form onSubmit={submitHandler} className={style.formPersonalData_generalInformation} action="">
               <div className={style.personalDataItem + ' ' + style.blockPersonalData_country}>
