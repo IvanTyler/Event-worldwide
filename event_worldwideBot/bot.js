@@ -2,7 +2,7 @@ require("dotenv").config();
 const { Telegraf } = require('telegraf')
 const bot = new Telegraf(process.env.TELEGRAM_TOKEN_EDU) //сюда помещается токен, который дал botFather
 const axios = require('axios')
-const apiUrl = 'http://localhost:3001/api/v1/subscribes'
+const apiUrl = 'http://localhost:3000/api/subscribes'
 
 //ответ бота на команду /start
 bot.start(ctx => ctx.reply(`

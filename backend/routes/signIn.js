@@ -15,7 +15,7 @@ router.route('/')
     if (currentUser && await(bcrypt.compare(password, currentUser.password))) {
       req.session.user = {id:currentUser.id, name:currentUser.Name};
       console.log(req.session.user, '<<<<<<<<<<<<<<<<<<<<<==============================')
-      return res.json({id: currentUser.id, email: currentUser.email, Name: currentUser.Name, City: currentUser.City, phone: currentUser.Userphonenumber, password: password})
+      return res.json({id: currentUser.id, email: currentUser.email, Name: currentUser.Name, City: currentUser.City, phone: currentUser.Userphonenumber, password: password, Userphoto: currentUser.Userphoto})
     } else {
       return res.sendStatus('400')
     }

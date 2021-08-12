@@ -26,7 +26,7 @@ function PersonalAreaEventlist() {
     dispatch(getFavouriteEvents())
   }, [])
 
-
+  console.log(favouriteList)
 
   return (
 

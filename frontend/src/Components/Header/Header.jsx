@@ -1,21 +1,13 @@
 import style from './Header.module.css';
 import styleContainer from '../Container/container.module.css';
-<<<<<<< HEAD
-import logo from './img/eww.png';
-=======
 import logo from './img/eww.png'
 import telegram from './img/telegram.png'
->>>>>>> test
 
 import { useHistory, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../redux/actions/userAC';
-<<<<<<< HEAD
-import { useEffect, useState } from 'react';
-=======
 import { useEffect, useRef, useState } from 'react';
->>>>>>> test
 
 function Header() {
   const dispatch = useDispatch();
@@ -23,11 +15,8 @@ function Header() {
   const HomeButton = () => {
     history.push('/');
   };
-
-<<<<<<< HEAD
   const user = useSelector((state) => state.user.user);
-  // console.log(user)
-=======
+
   const menuNav = useRef(null)
 
   const sandwitch_1 = useRef(null)
@@ -37,7 +26,6 @@ function Header() {
 
   const [menuNavBar, setmenuNavBar] = useState(false)
 
->>>>>>> test
   const logoutSession = () => {
     dispatch(logout(''));
     localStorage.clear();
@@ -82,17 +70,6 @@ function Header() {
 
   return (
     <>
-<<<<<<< HEAD
-      <header
-        className={
-          window.location.href === 'https://ikiro.ru/signUp' ||
-          window.location.href === 'https://ikiro.ru/signIn' ||
-          window.location.href === 'https://ikiro.ru/personalArea'
-            ? style.headerRest
-            : style.header
-        }
-      >
-=======
       <header className={
         window.location.href === 'http://localhost:3000/signUp' ||
           window.location.href === 'http://localhost:3000/signIn' ||
@@ -102,7 +79,6 @@ function Header() {
           window.location.href === 'http://localhost:3000/events' ?
           style.headerRest : style.header
       }>
->>>>>>> test
         <div className={`${styleContainer.container} ${style.containerHeader}`}>
           <nav className={style.navHeader}>
             <ul className={style.headerMenu}>
@@ -114,36 +90,11 @@ function Header() {
                   <span className={style.logoText}>Event worldwide</span>
                 </Link>
 
-<<<<<<< HEAD
-                {localStorage.Name ? (
-                  <>
-                    <Link className={style.headerMenuLink} to="/search">
-                      Поиск событий
-                    </Link>
-                    <Link className={style.headerMenuLink} to="/quicksearch">
-                      Быстрый поиск
-                    </Link>
-                    <Link className={style.headerMenuLink} to="/events">
-                      Мои события
-                    </Link>
-                  </>
-                ) : (
-                  console.log(123)
-                )}
-=======
->>>>>>> test
               </li>
               <li className={style.headerMenuItem}>
                 {localStorage.Name ? (
                   <>
-<<<<<<< HEAD
-                    <Link className={style.headerMenuLink} to="/personalArea">
-                      Личный кабинет
-                    </Link>
                     <Link onClick={() => logoutSession()} className={style.headerMenuLink}>
-=======
-                    <Link onClick={() => logoutSession()} className={style.headerMenuLink} to="/logout">
->>>>>>> test
                       Выйти
                     </Link>
                     <div onClick={() => showNavbar()} class={style.headerSandwich}>
@@ -166,7 +117,7 @@ function Header() {
             </ul>
           </nav>
         </div>
-        {user ? <div ref={menuNav} className={style.menuNav}>
+        {localStorage.Name ? <div ref={menuNav} className={style.menuNav}>
           <div className={style.menuNavItem}>
             <Link className={style.headerMenuLink} to="/personalArea">
               Личный кабинет

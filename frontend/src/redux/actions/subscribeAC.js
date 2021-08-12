@@ -27,7 +27,7 @@ export function createSubscribe(value) {
 
 
 export const addOneSubscribe = (data) => async (dispatch) => {
-  const oneSubscribe = await axios.post('https://ikiro.ru/api/subscribes',  data )
+  const oneSubscribe = await axios.post('http://localhost:3001/api/subscribes',  data )
   dispatch(createSubscribe(oneSubscribe.data))
 }
 
