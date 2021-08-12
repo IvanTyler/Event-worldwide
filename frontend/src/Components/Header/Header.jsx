@@ -39,7 +39,7 @@ function Header() {
                   <div className={style.wrapperHeaderLogo}>
                     <img className={style.headerLogo} src={logo} alt="" />
                   </div>
-                  <span className={style.logoText}>event world wide</span>
+                  <span className={style.logoText}>Event worldwide</span>
                 </Link>
 
                 {user ? (
