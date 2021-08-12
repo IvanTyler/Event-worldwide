@@ -61,21 +61,6 @@ function Header() {
                   <span className={style.logoText}>Event worldwide</span>
                 </Link>
 
-                {/* {user ? (
-                  <>
-                    <Link className={style.headerMenuLink} to="/search">
-                      Поиск событий
-                    </Link>
-                    <Link className={style.headerMenuLink} to="/quicksearch">
-                      Быстрый поиск
-                    </Link>
-                    <Link className={style.headerMenuLink} to="/events">
-                      Мои события
-                    </Link>
-                  </>
-                ) : (
-                  console.log(123)
-                )} */}
               </li>
               <li className={style.headerMenuItem}>
                 {user ? (
@@ -125,12 +110,12 @@ function Header() {
             </Link>
           </div>
           <div className={style.menuNavItem}>
-            <Link ClassName={style.headerMenuLink + ' ' + style.headerMenuLinkTelegram} to="/https://t.me/event_worldwideBot">
+            <a target="_blank" ClassName={style.headerMenuLink + ' ' + style.headerMenuLinkTelegram} href="https://t.me/event_worldwideBot">
+              <span className={style.telegramBot}>Бот</span>
               <div className={style.telegramBlock}>
                 <img className={style.telegramIcon} src={telegram} alt="telegram" />
               </div>
-              <span className={style.telegramBot}>Телеграм бот</span>
-            </Link>
+            </a>
           </div>
         </div> : console.log()}
       </header>
