@@ -84,7 +84,7 @@
 .menuNav {
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     z-index: 1;
     right: -320px;
     top: 0;
