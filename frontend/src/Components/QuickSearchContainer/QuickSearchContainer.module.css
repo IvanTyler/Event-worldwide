@@ -1,13 +1,12 @@
 .QuickSearchContainer {
-    margin-top: 50px;
-    max-width: 850px;
-    box-shadow: 0 0 30px rgb(0 0 0 / 15%);
-    padding: 0;
+  max-width: 850px;
+  padding: 0;
+  padding-top: 50px;
 }
 
 .QuickSearchContainer > form{
-    padding: 20px;
-    border-radius: 5px;
+  padding: 20px;
+  background-color: #fff;
 }
 
 .QuickSearchContainer > form > div {

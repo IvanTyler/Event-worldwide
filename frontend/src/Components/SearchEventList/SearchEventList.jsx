@@ -6,7 +6,7 @@ function SearchEventList() {
 
   return (
     <>
-      <div style={{padding: '0 20px', borderTop: 'solid 1px #000'}}>
+      <div style={{padding: '0 20px', borderTop: 'solid 1px #000', backgroundColor: '#fff'}}>
         {eventList.map((event) => <SearchItem
           location={event._embedded.venues[0].location}
           key={event.id}

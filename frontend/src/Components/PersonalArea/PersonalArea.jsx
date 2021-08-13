@@ -137,7 +137,7 @@ function PersonalArea() {
   return (
     <>
       <section className={style.sectionPersonalArea}>
-        <div className={styleContainer.container + ' ' + style.containerPersonalData}>
+        <div className={styleContainer.container + ' ' + style.containerPersonalData + ' ' + style.containerPersonalData2}>
           <h2 className={style.personalAreaTitle}>Personal area</h2>
           <div className={style.personalAreaContent}>
             <MyDropzone />

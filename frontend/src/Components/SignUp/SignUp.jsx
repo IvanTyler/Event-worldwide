@@ -50,7 +50,7 @@ function SignUp() {
         localStorage.setItem('Name', user.Name)
         localStorage.setItem('email', user.email)
         localStorage.setItem('City', user.City)
-        localStorage.setItem('phone', user.Userphonenumber)
+        localStorage.setItem('phone', user.phone)
         localStorage.setItem('photo', user.Userphoto)
         localStorage.setItem('password', user.password)
         HomeButton()
@@ -69,7 +69,7 @@ function SignUp() {
                         <input required onChange={inputHandlerName} className={style.inputHeaderForm} type="text" name="name" placeholder="Введите имя" />
                         <input required onChange={inputHandlerEmail} className={style.inputHeaderForm} maxLength="30" type="email" name="email" placeholder="Введите email" />
                         <input required onChange={inputHandlerPassword} className={style.inputHeaderForm} minLength="8" maxLength="15" type="password" name="password" placeholder="Введите password" />
-                        <input required onChange={inputHandlerPhone} className={style.inputHeaderForm} type="tel" name="phone" placeholder="+7(___)___-__-__" maxLength="15" />
+                        <input required onChange={inputHandlerPhone} className={style.inputHeaderForm} type="tel" name="phone" placeholder="+7(___)___-__-__" maxLength="30" />
                         <select className={style.inputHeaderForm} ref={selectCity} name="select">
                             <option>Москва</option>
                             <option>Санкт-Петербург</option>
