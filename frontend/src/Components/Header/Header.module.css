@@ -84,12 +84,12 @@
 .menuNav {
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     z-index: 1;
     right: -320px;
     top: 0;
     width: 320px;
-    height: 150vh;
+    height: 100vh;
     padding: 30px;
     background: linear-gradient(135deg,#002e66, #0eafaa);
     transition: 0.5s;
@@ -133,6 +133,10 @@
     border: solid 1px #fff;
     transition: 0.4s;
     margin-top: 5px;
+}
+
+.sandwichItem:first-child {
+    margin-top: 0
 }
 
 .sandwith_1, .sandwith_2, .sandwith_3{
