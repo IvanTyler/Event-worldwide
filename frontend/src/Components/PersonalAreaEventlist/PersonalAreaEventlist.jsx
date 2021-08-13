@@ -44,7 +44,7 @@ function PersonalAreaEventlist() {
             description={item.Event.Startdatetime}
           />)
         :
-        <p>Событий нет</p>
+        <p className={style.noEvents}>Событий нет</p>
         }
         </div>
         <YandexMap
