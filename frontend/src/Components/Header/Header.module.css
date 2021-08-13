@@ -12,6 +12,7 @@
 }
 
 .headerRest{
+    margin-bottom: 0;
     background-color: #002e66;
     border-bottom: 5px solid rgba(14, 175, 170);
 }
