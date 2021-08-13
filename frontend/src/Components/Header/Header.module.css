@@ -136,8 +136,8 @@
     margin-top: 5px;
 }
 
-.sandwichItem:first-child {
-    margin-top: 0;
+.sandwichItem:first-of-type {
+  margin-top: 0;
 }
 
 .sandwith_1, .sandwith_2, .sandwith_3{
