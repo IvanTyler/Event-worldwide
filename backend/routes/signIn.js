@@ -10,8 +10,10 @@ router.route('/')
 })
 .post(async(req, res) => {
   const {email, password} = req.body;
+  console.log(req.body);
   if (email && password) {
     const currentUser = await User.findOne({where:{email}});
+    console.log(currentUser);
     if (currentUser && await(bcrypt.compare(password, currentUser.password))) {
       req.session.user = {id:currentUser.id, name:currentUser.Name};
       console.log(req.session.user, '<<<<<<<<<<<<<<<<<<<<<==============================')

@@ -71,7 +71,11 @@ function Header() {
   return (
     <>
       <header className={
+<<<<<<< HEAD
         window.location.href === 'http://localhost:3001/signUp' ||
+=======
+        window.location.href === 'http://localhost:3000/signUp' ||
+>>>>>>> origin/event_worldwide_add_to_databaseNew3
           window.location.href === 'http://localhost:3000/signIn' ||
           window.location.href === 'http://localhost:3000/personalArea' ||
           window.location.href === 'http://localhost:3000/search' ||
