@@ -10,7 +10,7 @@ function YandexMap({ coordinates }) {
   return (
 
     <YMaps query={{ lang: 'ru_RU', ns: "use-load-option", apikey: key }}>
-      <Map width='100%' height='600px'
+      <Map width='600px' height='600px'
         defaultState={{
           center: [55.37, 35.75],
           zoom: 3,
