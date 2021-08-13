@@ -56,7 +56,7 @@ app.use(
     },
   }));
 
-app.use('/api/subscribes', subscribesRouter)
+app.use('/api/v1/subscribes', subscribesRouter)
 app.use('/api/user', userRouter);
 app.use('/api/signup', signUpRouter);
 app.use('/api/signin', signInRouter);

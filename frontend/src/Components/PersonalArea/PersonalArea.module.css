@@ -77,7 +77,7 @@
     height: 200px;
     border: 2px solid #ccc;
     background-image: url('https://www.gravatar.com/avatar/1336aff9fea5221a52cbae53e5eb061c?size=200&d=https%3A%2F%2Fsalesforce-developer.ru%2Fwp-content%2Fuploads%2Favatars%2Fno-avatar.jpg');
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 50%;

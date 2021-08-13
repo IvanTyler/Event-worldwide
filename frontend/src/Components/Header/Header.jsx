@@ -71,12 +71,12 @@ function Header() {
   return (
     <>
       <header className={
-        window.location.href === 'http://localhost:3000/signUp' ||
-          window.location.href === 'http://localhost:3000/signIn' ||
-          window.location.href === 'http://localhost:3000/personalArea' ||
-          window.location.href === 'http://localhost:3000/search' ||
-          window.location.href === 'http://localhost:3000/quicksearch' ||
-          window.location.href === 'http://localhost:3000/events' ?
+        window.location.href === 'http://localhost:3001/signUp' ||
+          window.location.href === 'http://localhost:3001/signIn' ||
+          window.location.href === 'http://localhost:3001personalArea' ||
+          window.location.href === 'http://localhost:3001/search' ||
+          window.location.href === 'http://localhost:3001/quicksearch' ||
+          window.location.href === 'http://localhost:3001/events' ?
           style.headerRest : style.header
       }>
         <div className={`${styleContainer.container} ${style.containerHeader}`}>
