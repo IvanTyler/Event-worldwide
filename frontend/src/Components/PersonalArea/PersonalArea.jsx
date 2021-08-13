@@ -64,7 +64,6 @@ function PersonalArea() {
     const formDataEdit = { ...formData };
     dispatch(saveUserDataPersonalArea(formDataEdit));
 
-
     setButtonUpdate(false);
     setButtonEdit(true);
   };
@@ -104,18 +103,31 @@ function PersonalArea() {
       });
     }, []);
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
-
+    const img = localStorage.photo;
+    console.log(img)
     return (
       <div className={style.personalData_avatar} {...getRootProps()}>
-        <div className={style.personalData_imgBg}>
-          <img src={localStorage.photo} alt="" />
-          <div className={style.personalDat_updateImg}>
-            <div className={style.fon}></div>
-            <div class={style.updateImg}>
-              <input {...getInputProps()} onClick={'none'} class={style.personalDat_FileInput} name="imgUpload" type="file" />
+          {/* <img src={localStorage.photo} alt="" /> */}
+          {img ? (
+        <div className={style.personalData_imgBg} style={{backgroundImage: `url(${ img })`}}> 
+            <div className={style.personalDat_updateImg} >
+              <div className={style.fon}></div>
+              <div class={style.updateImg}>
+                <input {...getInputProps()} onClick={'none'} class={style.personalDat_FileInput} name="imgUpload" type="file" />
+              </div>
             </div>
-          </div>
-        </div>
+            </div>
+          ) : (
+            <div className={style.personalData_imgBg}> 
+            <div className={style.personalDat_updateImg}>
+              <div className={style.fon}></div>
+              <div class={style.updateImg}>
+                <input {...getInputProps()} onClick={'none'} class={style.personalDat_FileInput} name="imgUpload" type="file" />
+              </div>
+            </div>
+            </div>
+          )}
+        
         <div className={style.personalData_name}>{localStorage.Name}</div>
         <button className={style.submitImg}>Загрузить img</button>
       </div>
