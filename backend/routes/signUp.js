@@ -7,7 +7,6 @@ const {User} = require('../db/models')
 router
 .route('/')
 .get(async (req, res) => {
-  console.log('signUp TYT!!!!')
   res.send('123').end();
 })
 .post(async (req, res) => {
@@ -18,7 +17,7 @@ router
         const createUser = await User.create({email, password: pass, Name: userName, City: city, Userphonenumber: phone}, {returning: true, plain: true});
         req.session.user = {id: createUser.id, name: createUser.Name};
         console.log(req.session.user);
-        return res.json({id: createUser.id, email: createUser.email, Name: createUser.Name, City: createUser.City, phone: createUser.Userphonenumber, password: password})
+        return res.json({id: createUser.id, email: createUser.email, Name: createUser.Name, City: createUser.City, phone: createUser.Userphonenumber, password: password,  Userphoto: createUser.Userphoto})
       } catch (error) {
         return res.sendStatus(500)
       }

@@ -3,16 +3,19 @@ import styleContainer from '../Container/container.module.css';
 import logo from './img/eww.png'
 import telegram from './img/telegram.png'
 
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../redux/actions/userAC';
 import { useEffect, useRef, useState } from 'react';
 
 function Header() {
-  const dispatch = useDispatch()
-  const user = useSelector((state) => state.user.id);
-  console.log(user);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const HomeButton = () => {
+    history.push('/');
+  };
+  const user = useSelector((state) => state.user.user);
 
   const menuNav = useRef(null)
 
@@ -24,13 +27,24 @@ function Header() {
   const [menuNavBar, setmenuNavBar] = useState(false)
 
   const logoutSession = () => {
-    dispatch(logout(''))
-  }
+    dispatch(logout(''));
+    localStorage.clear();
+    HomeButton();
+  };
+  useEffect(()=> {
+    if(user.id) {
+      // localStorage.setItem('id', user.id)
+      // localStorage.setItem('Name', user.Name)
+      // localStorage.setItem('email', user.email)
+      // localStorage.setItem('City', user.City)
+      // localStorage.setItem('phone', user.Userphonenumber)
+      // localStorage.setItem('photo', user.Userphoto)
+      // localStorage.setItem('password', user.password)
+    }
+  },[user]);
 
   const location = useLocation();
-  useEffect(() => {
-
-  }, [location]);
+  useEffect(() => {}, [location]);
 
 
   const showNavbar = () => {
@@ -57,12 +71,12 @@ function Header() {
   return (
     <>
       <header className={
-        window.location.href === 'http://localhost:3000/signUp' ||
-          window.location.href === 'http://localhost:3000/signIn' ||
-          window.location.href === 'http://localhost:3000/personalArea' ||
-          window.location.href === 'http://localhost:3000/search' ||
-          window.location.href === 'http://localhost:3000/quicksearch' ||
-          window.location.href === 'http://localhost:3000/events' ?
+        window.location.href === 'http://localhost:3001/signUp' ||
+          window.location.href === 'http://localhost:3001/signIn' ||
+          window.location.href === 'http://localhost:3001personalArea' ||
+          window.location.href === 'http://localhost:3001/search' ||
+          window.location.href === 'http://localhost:3001/quicksearch' ||
+          window.location.href === 'http://localhost:3001/events' ?
           style.headerRest : style.header
       }>
         <div className={`${styleContainer.container} ${style.containerHeader}`}>
@@ -78,9 +92,9 @@ function Header() {
 
               </li>
               <li className={style.headerMenuItem}>
-                {user ? (
+                {localStorage.Name ? (
                   <>
-                    <Link onClick={() => logoutSession()} className={style.headerMenuLink} to="/logout">
+                    <Link onClick={() => logoutSession()} className={style.headerMenuLink}>
                       Выйти
                     </Link>
                     <div onClick={() => showNavbar()} class={style.headerSandwich}>
@@ -103,7 +117,7 @@ function Header() {
             </ul>
           </nav>
         </div>
-        {user ? <div ref={menuNav} className={style.menuNav}>
+        {localStorage.Name ? <div ref={menuNav} className={style.menuNav}>
           <div className={style.menuNavItem}>
             <Link className={style.headerMenuLink} to="/personalArea">
               Личный кабинет

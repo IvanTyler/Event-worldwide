@@ -1,8 +1,6 @@
 const initState = {
-  user: '',
-  id: '',
+  user: {},
   events: '',
-  userAvatar: 'ava',
   subscribes: [],
   poster: [],
   eventsqiuck: [],

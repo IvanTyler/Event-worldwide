@@ -1,6 +1,6 @@
 import style from './SignUp.module.css'
-import { useState, useRef } from 'react'
-import { useDispatch } from 'react-redux';
+import { useState, useRef, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import styleContainer from '../Container/container.module.css'
 import { useHistory } from "react-router-dom";
 import { getFormUserData } from '../../redux/actions/userAC';
@@ -15,6 +15,7 @@ function SignUp() {
     const [inputEmail, setInputEmail] = useState('')
     const [inputPassword, setInputPassword] = useState('')
     const [inputPhone, setInputPhone] = useState('')
+    const user = useSelector(state => state.user.user)
 
 
     const inputHandlerName = (event) => {
@@ -33,6 +34,7 @@ function SignUp() {
     const HomeButton = () => {
         history.push("/");
     }
+    
 
     const submitHandler = (event) => {
         event.preventDefault()
@@ -41,8 +43,19 @@ function SignUp() {
         setInputUser('')
         setInputEmail('')
         setInputPassword('')
-        HomeButton()
     }
+    useEffect(()=> {
+      if(user.id) {
+        localStorage.setItem('id', user.id)
+        localStorage.setItem('Name', user.Name)
+        localStorage.setItem('email', user.email)
+        localStorage.setItem('City', user.City)
+        localStorage.setItem('phone', user.Userphonenumber)
+        localStorage.setItem('photo', user.Userphoto)
+        localStorage.setItem('password', user.password)
+        HomeButton()
+      }
+    },[user]);
 
 
     return (

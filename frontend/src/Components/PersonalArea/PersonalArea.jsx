@@ -1,10 +1,8 @@
 import style from './PersonalArea.module.css';
 import styleContainer from '../Container/container.module.css';
-import CountryItem from '../CountryItem/CountryItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveUserDataPersonalArea } from '../../redux/actions/userAC';
-import { userImg } from '../../redux/actions/userAC';
-import { useRef, useState, useCallback } from 'react';
+import { useRef, useState, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
 
@@ -13,72 +11,22 @@ import axios from 'axios';
 // };
 
 function PersonalArea() {
-  const avatar = useSelector((state) => state.user.userAvatar);
-  console.log(avatar);
-
-  let countryList = [
-    {
-      id: 1,
-      sity: 'Москва',
-    },
-    {
-      id: 2,
-      sity: 'Санкт-Петербург',
-    },
-    {
-      id: 3,
-      sity: 'Тверь',
-    },
-    {
-      id: 4,
-      sity: 'Саратов',
-    },
-    {
-      id: 5,
-      sity: 'Омск',
-    },
-    {
-      id: 6,
-      sity: 'Ивантеевка',
-    },
-    {
-      id: 7,
-      sity: 'Балашиха',
-    },
-    {
-      id: 8,
-      sity: 'Пермь',
-    },
-    {
-      id: 9,
-      sity: 'Мытищи',
-    },
-  ];
+  const [avatar, setAvatar] = useState(localStorage.photo);
 
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
+  console.log(localStorage);
 
-  const [countrySelectCurrent, setCountrySelectCurrent] = useState(countryList[0].sity);
-  const [countrySelectItems, setCountrySelectItems] = useState(false);
   const [buttonUpdate, setButtonUpdate] = useState(false);
-
-  const [editName, setEditName] = useState('Ivan');
-  const [editEmail, setEditEmail] = useState('Ivan@4566.ru');
-  const [editPassword, setEditPassword] = useState('as324234234234');
-  const [editPhone, setEditPhone] = useState('8 455 455 45 45');
-
+  const [buttonEdit, setButtonEdit] = useState(true);
+  const [editName, setEditName] = useState(localStorage.Name);
+  const [editEmail, setEditEmail] = useState(localStorage.email);
+  const [editPassword, setEditPassword] = useState(localStorage.password);
+  const [editPhone, setEditPhone] = useState(localStorage.phone);
+  const [editCountry, setEditCountry] = useState(localStorage.City);
   const [showHidePassword, setShowHidePassword] = useState(false);
 
   const divSelectCountry = useRef(null);
-
-  const showBlockCountryes = () => {
-    setCountrySelectItems(true);
-    if (countrySelectItems === true) {
-      setCountrySelectItems(false);
-    } else {
-      setCountrySelectItems(true);
-    }
-  };
-
   const editNameUser = useRef(null);
   const editEmailUser = useRef(null);
   const editPasswordUser = useRef(null);
@@ -94,8 +42,8 @@ function PersonalArea() {
     editEmailUser.current.classList.add(style.showEdit);
     editPasswordUser.current.classList.add(style.showEdit);
     editPhoneUser.current.classList.add(style.showEdit);
-
     setButtonUpdate(true);
+    setButtonEdit(false);
   };
 
   const saveUserData = () => {
@@ -113,9 +61,11 @@ function PersonalArea() {
   const submitHandler = (event) => {
     event.preventDefault();
     const formData = Object.fromEntries(new FormData(event.target));
-    const formDataEdit = { ...formData, sity: countrySelectCurrent };
+    const formDataEdit = { ...formData };
     dispatch(saveUserDataPersonalArea(formDataEdit));
+
     setButtonUpdate(false);
+    setButtonEdit(true);
   };
 
   const showPasswordUser = useRef(null);
@@ -131,44 +81,54 @@ function PersonalArea() {
       setShowHidePassword(false);
     }
   };
+  useEffect(() => {
+    // localStorage.setItem('id', user.id);
+    // localStorage.setItem('Name', user.Name);
+    // localStorage.setItem('email', user.email);
+    // localStorage.setItem('City', user.City);
+    // localStorage.setItem('phone', user.Userphonenumber);
+    // localStorage.setItem('photo', user.Userphoto);
+    // localStorage.setItem('password', user.password);
+  }, [user]);
 
-  // const avatarUser = useRef(null)
-  const [imgUpload, setImgUpload] = useState('');
-
-  const fileSelectedHandler = (event) => {
-    setImgUpload(event.target.files[0]);
-  };
-
-  // const downloadAvatarUser = (e) => {
-  //   e.preventDefault();
-  //   const files = e.target.imgUpload.files[0];
-  //   const hello = new FormData()
-  //   hello.append('files', e.target.imgUpload.files[0])
-  //   console.log(e.target.imgUpload.files[0])
-  //   console.log('formData ++++++++++++++++++++', hello)
-  //   console.log(files)
-  //   dispatch(userImg(hello, files))
-  // }
   function MyDropzone() {
     const onDrop = useCallback((acceptedFiles) => {
       const formData = new FormData();
       formData.append('file', acceptedFiles[0]);
-      axios.post('https://ikiro.ru/api/uploadimg', formData);
+      formData.append('email', localStorage.email);
+      axios.post('http://localhost:3001/api/uploadimg', formData).then((res) => {
+        const curUser = res.data;
+        localStorage.photo = curUser.Userphoto;
+        setAvatar(curUser.Userphoto);
+      });
     }, []);
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
-
+    const img = localStorage.photo;
+    console.log(img)
     return (
       <div className={style.personalData_avatar} {...getRootProps()}>
-        <div className={style.personalData_imgBg}>
-          <img src={avatar} alt="" />
-          <div className={style.personalDat_updateImg}>
-            <div className={style.fon}></div>
-            <div class={style.updateImg}>
-              <input {...getInputProps()} onClick={'none'} class={style.personalDat_FileInput} name="imgUpload" type="file" />
+          {/* <img src={localStorage.photo} alt="" /> */}
+          {img ? (
+        <div className={style.personalData_imgBg} style={{backgroundImage: `url(${ img })`}}> 
+            <div className={style.personalDat_updateImg} >
+              <div className={style.fon}></div>
+              <div class={style.updateImg}>
+                <input {...getInputProps()} onClick={'none'} class={style.personalDat_FileInput} name="imgUpload" type="file" />
+              </div>
             </div>
-          </div>
-        </div>
-        <div className={style.personalData_name}>Ivan</div>
+            </div>
+          ) : (
+            <div className={style.personalData_imgBg}> 
+            <div className={style.personalDat_updateImg}>
+              <div className={style.fon}></div>
+              <div class={style.updateImg}>
+                <input {...getInputProps()} onClick={'none'} class={style.personalDat_FileInput} name="imgUpload" type="file" />
+              </div>
+            </div>
+            </div>
+          )}
+        
+        <div className={style.personalData_name}>{localStorage.Name}</div>
         <button className={style.submitImg}>Загрузить img</button>
       </div>
     );
@@ -184,32 +144,18 @@ function PersonalArea() {
 
             <form onSubmit={submitHandler} className={style.formPersonalData_generalInformation} action="">
               <div className={style.personalDataItem + ' ' + style.blockPersonalData_country}>
-                <label className={style.formPersonalData_labelCountry + ' ' + style.labelFormPersonalData} htmlFor="country">
-                  <span className={style.formPersonalDataText}>Country</span>
+                <label className={style.formPersonalData_labelCountry + ' ' + style.labelFormPersonalData}>
+                  <span className={style.formPersonalDataText}>City</span>
                 </label>
-                <div className={style.wrapperSelectCountry}>
-                  <div
-                    ref={divSelectCountry}
-                    onClick={() => showBlockCountryes()}
-                    className={style.blockPersonalDataText + ' ' + style.sity}
-                    id="country"
-                  >
-                    Москва
-                  </div>
-                  {countrySelectItems && (
-                    <div className={style.CountrySelect}>
-                      {countryList.map((item) => (
-                        <CountryItem
-                          key={item.id}
-                          id={item.id}
-                          sity={item.sity}
-                          divSelectCountry={divSelectCountry}
-                          setCountrySelectCurrent={setCountrySelectCurrent}
-                        />
-                      ))}
-                    </div>
-                  )}
-                </div>
+                <input
+                  ref={divSelectCountry}
+                  className={style.blockPersonalDataText}
+                  type="text"
+                  name="sity"
+                  readOnly="readonly"
+                  onChange={(event) => setEditCountry(event.target.value)}
+                  value={editCountry}
+                />
               </div>
               <div className={style.personalDataItem + ' ' + style.wrapperPersonalData_firsName}>
                 <label className={style.formPersonalData_labelFirsName + ' ' + style.labelFormPersonalData} htmlFor="firstName">
@@ -275,9 +221,11 @@ function PersonalArea() {
                   Обновить
                 </button>
               )}
-              <span onClick={() => editUserData()} className={style.blockPersonalDataSubmit + ' ' + style.blockPersonalDataEdit}>
-                Редактировать
-              </span>
+              {buttonEdit && (
+                <span onClick={() => editUserData()} className={style.blockPersonalDataSubmit + ' ' + style.blockPersonalDataEdit}>
+                  Редактировать
+                </span>
+              )}
             </form>
           </div>
         </div>
