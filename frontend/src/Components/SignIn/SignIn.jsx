@@ -54,8 +54,8 @@ function SignIn() {
                         Authorization
                     </div>
                     <form className={SignUp.Headerform} onSubmit={submitHandler} action="">
-                        <input required onChange={inputHandlerEmail} maxLength="15" className={SignUp.inputHeaderForm} type="email" name="email" placeholder="Введите email" />
-                        <input required onChange={inputHandlerPassword} maxLength="15" className={SignUp.inputHeaderForm} type="password" name="password" placeholder="Password" />
+                        <input required onChange={inputHandlerEmail} maxLength="30" className={SignUp.inputHeaderForm} type="email" name="email" placeholder="Введите email" />
+                        <input required onChange={inputHandlerPassword} maxLength="30" className={SignUp.inputHeaderForm} type="password" name="password" placeholder="Password" />
                         <button className={SignUp.HeaderFormButton} type="submit">Войти</button>
                     </form>
                 </div>

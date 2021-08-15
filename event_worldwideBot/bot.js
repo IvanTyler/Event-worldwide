@@ -31,12 +31,9 @@ bot.command('events', async (ctx) => {
     const events = await axios(apiUrl)
     const data = events.data
 
-    let text = data.map((event) => {
-      return (`Название: ${event.Event.Name}; Фото: ${event.Event.Picture}; Ссылка на билет: ${event.Event.Url}; Начало: ${event.Event.Startdatetime}`)
-    })
-
-    console.log(text);
-    ctx.reply(text)
+    data.forEach( (element) => {
+      ctx.reply(`${element.Event.Name} \n${element.Event.Url}\n${element.Event.Picture}\n${element.Event.Startdatetime}\n`)
+      })
   } catch (e) {
     ctx.reply('Текущих событий нет')
   }

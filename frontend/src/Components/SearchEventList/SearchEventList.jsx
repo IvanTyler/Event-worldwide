@@ -6,15 +6,17 @@ function SearchEventList() {
 
   return (
     <>
-      {eventList.map((event) => <SearchItem
-        location={event._embedded.venues[0].location}
-        key={event.id}
-        id={event.id}
-        url={event.url}
-        avatar={<Avatar src={event.images[0].url} />}
-        title={<a href={event.url}>{event.name}</a>}
-        description={event.dates.start.dateTime}
-      />)}
+      <div style={{padding: '0 20px', borderTop: 'solid 1px #000'}}>
+        {eventList.map((event) => <SearchItem
+          location={event._embedded.venues[0].location}
+          key={event.id}
+          id={event.id}
+          url={event.url}
+          avatar={<Avatar src={event.images[0].url} />}
+          title={<a href={event.url}>{event.name}</a>}
+          description={event.dates.start.dateTime}
+        />)}
+      </div>
     </>
   );
 }

@@ -9,7 +9,7 @@ export function setAll(value) {
 }
 
 export const getFavouriteEventsCoordinates = () => async (dispatch) => {
-  const favouriteEventsCoordinates = await axios('http://localhost:3001/api/subscribes');
+  const favouriteEventsCoordinates = await axios('http://localhost:3001/api/v1/subscribes');
   console.log(favouriteEventsCoordinates.data);
   dispatch(setAll(favouriteEventsCoordinates.data))
 }
