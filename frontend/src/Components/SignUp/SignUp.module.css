@@ -24,6 +24,7 @@
     width: 330px;
     padding: 20px;
     box-shadow: 0 0 30px rgb(0 0 0 / 15%);
+    background-color: #fff;
 }
 
 .inputHeaderForm {

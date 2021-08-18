@@ -31,7 +31,7 @@ function QuickSearchItem({ location, avatar, title, description, url, key, id })
             title={<a href={url}>{title}</a>}
             description={description}
           />
-          <Button onClick={() => addSubscribe({ avatar, url, title, description, location })} on type="primary" shape="circle">Add</Button>
+          <Button onClick={() => addSubscribe({ avatar, url, title, description, location })} on type="primary" shape="circle">+</Button>
         </List.Item>
         :
         <p>Download</p>

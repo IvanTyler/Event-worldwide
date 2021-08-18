@@ -8,7 +8,7 @@ function QuickSearchEventList() {
 
   return (
     <>
-      <div style={{ padding: '0 20px', borderTop: 'solid 1px #000' }}>
+      <div style={{ padding: '0 20px', borderTop: 'solid 1px #000', backgroundColor: '#fff' }}>
         {eventList.map((event) => <QuickSearchItem
           location={event.venue.location}
           key={event.id}

@@ -10,6 +10,7 @@ import { logout } from '../../redux/actions/userAC';
 import { useEffect, useRef, useState } from 'react';
 
 function Header() {
+ 
   const dispatch = useDispatch();
   const history = useHistory();
   const HomeButton = () => {
@@ -95,7 +96,7 @@ function Header() {
                 {localStorage.Name ? (
                   <>
                     <Link onClick={() => logoutSession()} className={style.headerMenuLink}>
-                      Выйти
+                      Logout
                     </Link>
                     <div onClick={() => showNavbar()} class={style.headerSandwich}>
                       <div ref={sandwitch_1} class={style.sandwichItem + ' ' + style.sandwith_1}></div>
@@ -106,10 +107,10 @@ function Header() {
                 ) : (
                   <>
                     <Link className={style.headerMenuLink} to="/signUp">
-                      SignUp
+                      Sign Up
                     </Link>
                     <Link className={style.headerMenuLink} to="/signIn">
-                      SignIn
+                      Sign In
                     </Link>
                   </>
                 )}

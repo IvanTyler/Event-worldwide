@@ -35,7 +35,7 @@ function PersonalAreaEventlist() {
         <div className={styleContainer.container + ' ' + style.PersonalAreaEventlistContainer}>
           <h2 class={styleSignUp.HeaderformTop + ' ' + style.HeaderformTop}>Текущие события</h2>
 
-          <div style={{ padding: '0 20px', borderTop: 'solid 1px #000' }}>
+          <div style={{ padding: '0 20px', borderTop: 'solid 1px #000', backgroundColor: '#fff' }}>
             {favouriteList.length ? favouriteList.map((item) => <PersonalAreaFavouriteItem
               key={item.id}
               id={item.id}

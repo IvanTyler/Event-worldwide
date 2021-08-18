@@ -15,3 +15,11 @@ html, body, #root, .App {
   margin-top: 0;
 }
 
+.main {
+  height: 220vh;
+  background: linear-gradient(to right, rgba(0,0,0,.4), rgba(0,0,0,.4)), url('./Components/DescriptionProject/img/dostoprimechatelnosti-world.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
