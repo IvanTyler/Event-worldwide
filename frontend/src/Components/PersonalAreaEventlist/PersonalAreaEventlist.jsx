@@ -35,19 +35,6 @@ function PersonalAreaEventlist() {
         <div className={styleContainer.container + ' ' + style.PersonalAreaEventlistContainer}>
           <h2 class={styleSignUp.HeaderformTop + ' ' + style.HeaderformTop}>Текущие события</h2>
 
-<<<<<<< HEAD
-          {favouriteList.length ? favouriteList.map((item) => <PersonalAreaFavouriteItem
-            key={item.id}
-            id={item.id}
-            avatar={item.Event.Picture}
-            url={item.Event.Url}
-            title={item.Event.Name}
-            description={item.Event.Startdatetime}
-          />)
-        :
-        <p className={style.noEvents}>Событий нет</p>
-        }
-=======
           <div style={{ padding: '0 20px', borderTop: 'solid 1px #000' }}>
             {favouriteList.length ? favouriteList.map((item) => <PersonalAreaFavouriteItem
               key={item.id}
@@ -61,7 +48,6 @@ function PersonalAreaEventlist() {
               <p className={style.noEvents}>Событий нет</p>
             }
           </div>
->>>>>>> 9a4ef32f7e72657573855a917913233311259afc
         </div>
         <YandexMap
           coordinates={coordinates}
